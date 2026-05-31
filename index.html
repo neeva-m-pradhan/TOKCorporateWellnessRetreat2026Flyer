@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Temple of Knowledge Corporate Wellness Retreat 2026"
+    />
+    <title>TOK Corporate Wellness Retreat 2026 — Flyer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mulish:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Load jsPDF and html2canvas from multiple CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+      :root {
+        --cream: #faf1de;
+        --saffron: #d9712b;
+        --saffron-deep: #a8481a;
+        --gold: #c68a1e;
+        --gold-pale: #e8cb80;
+        --brown: #3b2718;
+        --line: #e4d2ac;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        background: #cdbf9f;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        font-family: "Mulish", sans-serif;
+        color: var(--brown);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 28px 20px;
+        min-height: 100vh;
+      }
+
+      .controls {
+        margin-bottom: 20px;
+        display: none;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn-download,
+      .btn-print {
+        color: white;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-download {
+        background: var(--saffron);
+      }
+
+      .btn-print {
+        background: #0066cc;
+      }
+
+      .btn-download:hover,
+      .btn-print:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .btn-download:disabled,
+      .btn-print:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .status {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background: #fff9f0;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        font-size: 12px;
+        color: var(--saffron-deep);
+        display: none;
+        text-align: center;
+      }
+
+      .status.show {
+        display: block;
+      }
+
+      .status.success {
+        background: #f0fdf4;
+        border-color: #22c55e;
+        color: #166534;
+      }
+
+      .status.error {
+        background: #fef2f2;
+        border-color: #f87171;
+        color: #991b1b;
+      }
+
+      .page {
+        width: 794px;
+        height: 1123px;
+        background: var(--cream);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 24px 70px rgba(40, 24, 10, 0.4);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--saffron) 0%,
+          var(--gold) 55%,
+          var(--saffron) 100%
+        );
+        z-index: 5;
+      }
+
+      .head {
+        position: relative;
+        height: 336px;
+        flex: 0 0 336px;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+      }
+
+      .head__img {
+        position: absolute;
+        inset: 0;
+        background-image: url("./img/header-hero.jpeg");
+        background-position: center 34%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 1;
+      }
+
+      .head::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(18, 38, 66, 0.22) 0%,
+          rgba(28, 22, 16, 0.5) 56%,
+          rgba(24, 16, 10, 0.82) 90%,
+          rgba(20, 12, 7, 0.93) 100%
+        );
+        z-index: 1;
+      }
+
+      .head__inner {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 56px 22px;
+        gap: 36px;
+      }
+
+      .logo {
+        height: 52px;
+        width: auto;
+        filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.45));
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 11px;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 2px;
+        font-family: "Mulish";
+        text-transform: uppercase;
+        color: var(--gold-pale);
+        text-indent: 0.26em;
+      }
+
+      .kicker .dot {
+        width: 6px;
+        height: 6px;
+        transform: rotate(45deg);
+        background: var(--gold-pale);
+      }
+
+      .kicker .rule {
+        width: 40px;
+        height: 2px;
+        background: var(--gold-pale);
+        opacity: 0.6;
+      }
+
+      .head .pres {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 21px;
+        color: #f0e6d4;
+        margin-top: 9px;
+        text-shadow: 0 2px 16px rgba(10, 14, 28, 0.5);
+      }
+
+      .head h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        font-size: 50px;
+        line-height: 0.98;
+        color: #fff;
+        margin: 2px 0 0;
+        text-shadow: 0 2px 22px rgba(10, 14, 28, 0.55);
+      }
+
+      .head h1 b {
+        color: var(--gold-pale);
+        font-weight: 700;
+      }
+
+      .tagline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 13px;
+        font-family: "Mulish";
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: var(--cream-2);
+        margin-top: 14px;
+        text-shadow: 0 1px 10px rgba(10, 14, 28, 0.5);
+      }
+
+      .tagline i {
+        width: 4px;
+        height: 4px;
+        background: var(--gold-pale);
+        transform: rotate(45deg);
+        display: inline-block;
+      }
+
+      .meta {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid var(--line);
+        padding: 0 0 16px;
+        margin-bottom: 6px;
+      }
+
+      .meta .cell {
+        padding: 0 30px;
+        text-align: center;
+        border-left: 1px solid var(--line);
+      }
+
+      .meta .cell:first-child {
+        border-left: none;
+      }
+
+      .meta .lab {
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--saffron);
+        font-weight: 700;
+      }
+
+      .meta .val {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--brown);
+        margin-top: 3px;
+      }
+
+      .body {
+        gap: 20px;
+        display: flex;
+        flex: 1 1 auto;
+        padding: 20px 56px 18px;
+        flex-direction: column;
+      }
+
+      .cols {
+        display: grid;
+        grid-template-columns: 1.18fr 1fr;
+        gap: 0 38px;
+        flex: 1 1 auto;
+      }
+
+      .col-right {
+        border-left: 1px solid var(--line);
+        padding-left: 38px;
+      }
+
+      .sec-head {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 13px;
+      }
+
+      .sec-head h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        font-size: 27px;
+        color: var(--saffron-deep);
+        line-height: 1.05;
+        white-space: nowrap;
+      }
+
+      .sec-head .bar {
+        height: 1px;
+        background: var(--line);
+        flex: 1 1 auto;
+      }
+
+      ol.agenda {
+        list-style: none;
+        counter-reset: a;
+      }
+
+      ol.agenda li {
+        counter-increment: a;
+        display: flex;
+        gap: 13px;
+        align-items: baseline;
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(228, 210, 172, 0.6);
+      }
+
+      ol.agenda li:last-child {
+        border-bottom: none;
+      }
+
+      ol.agenda li::before {
+        content: counter(a, decimal-leading-zero);
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--saffron);
+        min-width: 22px;
+        flex: 0 0 22px;
+        line-height: 1.25;
+      }
+
+      ol.agenda li span {
+        font-size: 13.3px;
+        line-height: 1.26;
+        color: var(--brown);
+        font-weight: 500;
+      }
+
+      ul.highlights {
+        list-style: none;
+      }
+
+      ul.highlights li {
+        display: flex;
+        gap: 11px;
+        align-items: baseline;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(228, 210, 172, 0.6);
+      }
+
+      ul.highlights li:last-child {
+        border-bottom: none;
+      }
+
+      ul.highlights li::before {
+        content: "";
+        flex: 0 0 6px;
+        width: 6px;
+        height: 6px;
+        background: var(--saffron);
+        transform: rotate(45deg);
+        position: relative;
+        top: 1px;
+      }
+
+      ul.highlights li span {
+        font-size: 13.3px;
+        line-height: 1.26;
+        color: var(--brown);
+        font-weight: 500;
+      }
+
+      .imgband {
+        flex: 0 0 270px;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+      }
+
+      .imgband__img {
+        position: absolute;
+        inset: 0;
+        background-image: url("./img/footer-hero.jpeg");
+        background-position: center 42%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 1;
+        filter: brightness(85%);
+      }
+
+      .imgband::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(42, 26, 15, 0.1) 0%,
+          rgba(42, 26, 15, 0) 30%,
+          rgba(42, 26, 15, 0.55) 70%,
+          rgba(28, 16, 8, 0.93) 100%
+        );
+        z-index: 1;
+      }
+
+      .contact {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0 56px 24px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        z-index: 2;
+      }
+
+      .contact__left .lab {
+        font-size: 15px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--gold-pale);
+        font-weight: 700;
+      }
+
+      .contact__left .line {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        font-weight: 600;
+        color: #fff;
+        margin-top: 3px;
+        line-height: 1.1;
+        max-width: 300px;
+      }
+
+      .contact__right {
+        text-align: right;
+      }
+
+      .contact__right .lab {
+        font-size: 15px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--gold-pale);
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .phones {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        align-items: flex-end;
+      }
+
+      .phones span {
+        font-family: "Mulish", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: #fbefd9;
+        white-space: nowrap;
+      }
+
+      @media print {
+        @page {
+          size: A4;
+          margin: 0;
+        }
+        html,
+        body {
+          background: #fff;
+          padding: 0;
+        }
+        .page {
+          box-shadow: none;
+        }
+        .controls,
+        .status {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+      <button class="btn-download" onclick="downloadPDF()">
+        📥 Download as PDF
+      </button>
+      <button class="btn-print" onclick="printToPDF()">🖨️ Print to PDF</button>
+    </div>
+    <div class="status" id="status"></div>
+
+    <div class="page" id="flyer-page">
+      <header class="head">
+        <div class="head__img"></div>
+        <div class="head__inner">
+          <img
+            class="logo"
+            src="./img/logo.png"
+            alt="The Art of Living Logo"
+            loading="lazy"
+          />
+          <div>
+            <div class="kicker">
+              <span class="rule"></span>
+              TEMPLE OF KNOWLEDGE
+              <span class="dot"></span>
+              NAMO BUDDHA
+              <span class="rule"></span>
+            </div>
+            <div class="pres">presents the</div>
+            <h1>Corporate Wellness<br />Retreat <b>2026</b></h1>
+            <div class="tagline">
+              <span>RECHARGE</span>
+              <i></i>
+              <span>RENEW</span>
+              <i></i>
+              <span>REJUVENATE YOUR TEAM</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="body">
+        <div class="meta">
+          <div class="cell">
+            <div class="lab">Date</div>
+            <div class="val">Saturday, June 6, 2026</div>
+          </div>
+          <div class="cell">
+            <div class="lab">Time</div>
+            <div class="val">10:00 AM – 2:30 PM</div>
+          </div>
+          <div class="cell">
+            <div class="lab">Venue</div>
+            <div class="val">Namo Buddha, Nepal</div>
+          </div>
+        </div>
+
+        <div class="cols">
+          <section class="col-left">
+            <div class="sec-head">
+              <h2>Program Agenda</h2>
+              <span class="bar"></span>
+            </div>
+            <ol class="agenda">
+              <li><span>Welcome &amp; Introduction</span></li>
+              <li>
+                <span>The Temple of Knowledge: Vision &amp; Purpose</span>
+              </li>
+              <li>
+                <span
+                  >Art of Living: Global Impact &amp; Organisational
+                  Well-being</span
+                >
+              </li>
+              <li>
+                <span>Workplace Wellness for Sustainable Performance</span>
+              </li>
+              <li><span>Meditation &amp; Mindfulness Experience</span></li>
+              <li>
+                <span>Corporate Retreat Experience at Temple of Knowledge</span>
+              </li>
+              <li>
+                <span>Leadership, Learning &amp; Institutional Impact</span>
+              </li>
+              <li><span>Open Discussion &amp; Q&amp;A</span></li>
+              <li><span>Closing Remarks</span></li>
+            </ol>
+          </section>
+
+          <section class="col-right">
+            <div class="sec-head">
+              <h2>Retreat Highlights</h2>
+              <span class="bar"></span>
+            </div>
+            <ul class="highlights">
+              <li><span>Tapping Your Inner Potential</span></li>
+              <li><span>Mindfulness &amp; Nature of the Mind</span></li>
+              <li><span>Essence of Meditation</span></li>
+              <li><span>Stress Management &amp; Emotional Balance</span></li>
+              <li><span>Healthy Organic Lunch</span></li>
+              <li><span>Nature Walk &amp; Temple Tour</span></li>
+              <li><span>Tea Break Amidst Nature</span></li>
+            </ul>
+          </section>
+        </div>
+      </main>
+
+      <footer class="imgband">
+        <div class="imgband__img"></div>
+        <div class="contact">
+          <div class="contact__left">
+            <div class="lab">Reserve your place</div>
+            <div class="line">A day of stillness, away from the desk.</div>
+          </div>
+          <div class="contact__right">
+            <div class="lab">Contact</div>
+            <div class="phones">
+              <span>+977 9851233348</span>
+              <span>+977 9813699979</span>
+              <span>+977 9813804134</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const { jsPDF } = window.jspdf;
+
+      function showStatus(message, type = "info") {
+        const statusEl = document.getElementById("status");
+        statusEl.textContent = message;
+        statusEl.className = `status show ${type}`;
+      }
+
+      function printToPDF() {
+        showStatus("📖 Opening print dialog...");
+        window.print();
+      }
+
+      async function downloadPDF() {
+        const button = event.target;
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = "⏳ Processing...";
+
+        try {
+          showStatus("⏳ Capturing page content...");
+
+          if (typeof html2canvas === "undefined") {
+            throw new Error("html2canvas not loaded");
+          }
+          if (typeof jsPDF === "undefined") {
+            throw new Error("jsPDF not loaded");
+          }
+
+          const element = document.getElementById("flyer-page");
+          const canvas = await html2canvas(element, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: "#faf1de",
+            logging: false,
+          });
+
+          showStatus("📄 Creating PDF...");
+
+          const imgData = canvas.toDataURL("image/jpeg", 0.95);
+          const pdf = new jsPDF({
+            orientation: "portrait",
+            unit: "mm",
+            format: "a4",
+            compress: true,
+          });
+
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = pdf.internal.pageSize.getHeight();
+
+          pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+          pdf.save("TOK-Corporate-Wellness-Retreat-2026.pdf");
+
+          showStatus("✅ PDF downloaded successfully!", "success");
+          button.textContent = originalText;
+          button.disabled = false;
+        } catch (error) {
+          console.error("Error:", error);
+          showStatus(
+            "❌ Error: " +
+              error.message +
+              ' — Try "Print to PDF" button instead',
+            "error",
+          );
+          button.textContent = originalText;
+          button.disabled = false;
+        }
+      }
+
+      window.addEventListener("load", () => {
+        console.log("✅ Page loaded");
+        console.log("html2canvas:", typeof html2canvas !== "undefined");
+        console.log("jsPDF:", typeof jsPDF !== "undefined");
+      });
+    </script>
+  </body>
+</html>
