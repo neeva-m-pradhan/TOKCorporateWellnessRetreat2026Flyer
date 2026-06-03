@@ -7,19 +7,21 @@
       name="description"
       content="Temple of Knowledge Corporate Wellness Retreat 2026"
     />
+    <meta name="theme-color" content="#faf1de" />
     <title>TOK Corporate Wellness Retreat 2026 — Flyer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <!-- Font optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mulish:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Load jsPDF and html2canvas from multiple CDNs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
     <style>
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* VARIABLES & RESETS                              */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       :root {
         --cream: #faf1de;
         --saffron: #d9712b;
@@ -28,224 +30,209 @@
         --gold-pale: #e8cb80;
         --brown: #3b2718;
         --line: #e4d2ac;
+        --line-soft: rgba(228, 210, 172, 0.5);
+        --bg-dark: #c5b690;
+
+        /* Spacing scale */
+        --spacing-xs: 8px;
+        --spacing-sm: 12px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+        --spacing-2xl: 56px;
+
+        /* Responsive breakpoints */
+        --bp-sm: 640px;
+        --bp-md: 768px;
+        --bp-lg: 1024px;
       }
 
-      * {
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
-        margin: 0;
-        padding: 0;
       }
 
-      html,
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
-        background: #cdbf9f;
+        margin: 0;
+        padding: var(--spacing-md);
+        background: linear-gradient(
+          135deg,
+          #d4a574 0%,
+          #c5b690 40%,
+          #b8945f 100%
+        );
+        font-family:
+          "Mulish",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--brown);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
 
-      body {
-        font-family: "Mulish", sans-serif;
-        color: var(--brown);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 28px 20px;
-        min-height: 100vh;
-      }
-
-      .controls {
-        margin-bottom: 20px;
-        display: none;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .btn-download,
-      .btn-print {
-        color: white;
-        border: none;
-        padding: 12px 28px;
-        border-radius: 4px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .btn-download {
-        background: var(--saffron);
-      }
-
-      .btn-print {
-        background: #0066cc;
-      }
-
-      .btn-download:hover,
-      .btn-print:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        transform: translateY(-2px);
-      }
-
-      .btn-download:disabled,
-      .btn-print:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-      }
-
-      .status {
-        margin-top: 10px;
-        padding: 10px 20px;
-        background: #fff9f0;
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        font-size: 12px;
-        color: var(--saffron-deep);
-        display: none;
-        text-align: center;
-      }
-
-      .status.show {
-        display: block;
-      }
-
-      .status.success {
-        background: #f0fdf4;
-        border-color: #22c55e;
-        color: #166534;
-      }
-
-      .status.error {
-        background: #fef2f2;
-        border-color: #f87171;
-        color: #991b1b;
-      }
-
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* PAGE LAYOUT                                      */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .page {
-        width: 794px;
-        height: 1123px;
+        width: 100%;
+        max-width: 860px;
         background: var(--cream);
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 24px 70px rgba(40, 24, 10, 0.4);
         display: flex;
         flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(36, 20, 8, 0.25);
+      }
+
+      @media (min-width: var(--bp-md)) {
+        .page {
+          box-shadow: 0 32px 90px rgba(36, 20, 8, 0.45);
+        }
       }
 
       .page::before {
         content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 6px;
+        display: block;
+        height: 3px;
         background: linear-gradient(
           90deg,
           var(--saffron) 0%,
-          var(--gold) 55%,
+          var(--gold) 50%,
           var(--saffron) 100%
         );
-        z-index: 5;
+        order: -1;
       }
 
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* HEADER SECTION                                  */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .head {
         position: relative;
-        height: 336px;
-        flex: 0 0 336px;
+        min-height: 220px;
+        height: auto;
         overflow: hidden;
         color: #fff;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @media (min-width: var(--bp-sm)) {
+        .head {
+          min-height: 290px;
+        }
       }
 
       .head__img {
         position: absolute;
         inset: 0;
-        background-image: url("./img/header-hero.jpeg");
-        background-position: center 34%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        z-index: 1;
+        background: url("./img/header-hero.jpeg") center 34% / cover no-repeat;
+        z-index: 0;
       }
 
-      .head::after {
-        content: "";
+      .head__overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
           180deg,
-          rgba(18, 38, 66, 0.22) 0%,
-          rgba(28, 22, 16, 0.5) 56%,
-          rgba(24, 16, 10, 0.82) 90%,
-          rgba(20, 12, 7, 0.93) 100%
+          rgba(18, 38, 66, 0.18) 0%,
+          rgba(28, 22, 16, 0.48) 52%,
+          rgba(22, 14, 8, 0.84) 88%,
+          rgba(18, 10, 5, 0.95) 100%
         );
         z-index: 1;
       }
 
       .head__inner {
-        position: absolute;
-        inset: 0;
+        position: relative;
         z-index: 2;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        padding: 24px 56px 22px;
-        gap: 36px;
+        padding: var(--spacing-lg) var(--spacing-lg);
+        width: 100%;
+      }
+
+      @media (min-width: var(--bp-sm)) {
+        .head__inner {
+          padding: var(--spacing-xl) var(--spacing-2xl);
+        }
       }
 
       .logo {
-        height: 52px;
+        height: 40px;
         width: auto;
-        filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.45));
+        margin-bottom: var(--spacing-lg);
+        filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.5));
       }
 
+      @media (min-width: var(--bp-sm)) {
+        .logo {
+          height: 50px;
+        }
+      }
+
+      /* Kicker (decorative label) */
       .kicker {
         display: inline-flex;
         align-items: center;
-        gap: 11px;
+        gap: var(--spacing-sm);
         font-weight: 700;
-        font-size: 16px;
-        letter-spacing: 2px;
-        font-family: "Mulish";
+        font-size: clamp(11px, 2vw, 13px);
+        letter-spacing: 0.18em;
         text-transform: uppercase;
         color: var(--gold-pale);
-        text-indent: 0.26em;
-      }
-
-      .kicker .dot {
-        width: 6px;
-        height: 6px;
-        transform: rotate(45deg);
-        background: var(--gold-pale);
+        margin-bottom: var(--spacing-lg);
       }
 
       .kicker .rule {
-        width: 40px;
-        height: 2px;
+        width: 30px;
+        height: 1.5px;
         background: var(--gold-pale);
-        opacity: 0.6;
+        opacity: 0.55;
       }
 
-      .head .pres {
+      @media (min-width: var(--bp-sm)) {
+        .kicker .rule {
+          width: 40px;
+        }
+      }
+
+      .kicker .dot {
+        width: 5px;
+        height: 5px;
+        background: var(--gold-pale);
+        transform: rotate(45deg);
+      }
+
+      .pres {
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
-        font-weight: 500;
-        font-size: 21px;
-        color: #f0e6d4;
-        margin-top: 9px;
-        text-shadow: 0 2px 16px rgba(10, 14, 28, 0.5);
+        font-size: clamp(16px, 4vw, 20px);
+        color: rgba(240, 230, 212, 0.9);
+        margin-bottom: var(--spacing-sm);
       }
 
       .head h1 {
         font-family: "Cormorant Garamond", serif;
         font-weight: 600;
-        font-size: 50px;
-        line-height: 0.98;
+        font-size: clamp(32px, 8vw, 50px);
+        line-height: 1.1;
         color: #fff;
-        margin: 2px 0 0;
-        text-shadow: 0 2px 22px rgba(10, 14, 28, 0.55);
+        text-shadow: 0 2px 22px rgba(10, 14, 28, 0.5);
+        margin-bottom: var(--spacing-lg);
       }
 
       .head h1 b {
@@ -256,16 +243,14 @@
       .tagline {
         display: flex;
         align-items: center;
+        gap: var(--spacing-sm);
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 13px;
-        font-family: "Mulish";
         font-weight: 600;
+        font-size: clamp(10px, 2vw, 12px);
         letter-spacing: 0.22em;
         text-transform: uppercase;
-        font-size: 12px;
-        color: var(--cream-2);
-        margin-top: 14px;
-        text-shadow: 0 1px 10px rgba(10, 14, 28, 0.5);
+        color: rgba(240, 230, 212, 0.82);
       }
 
       .tagline i {
@@ -273,21 +258,44 @@
         height: 4px;
         background: var(--gold-pale);
         transform: rotate(45deg);
-        display: inline-block;
+        display: block;
       }
 
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* META BAR                                        */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .meta {
         display: flex;
+        flex-flow: row;
         justify-content: center;
+        padding: var(--spacing-lg) 0;
         border-bottom: 1px solid var(--line);
-        padding: 0 0 16px;
-        margin-bottom: 6px;
+        background: var(--cream);
+        gap: 0;
+      }
+
+      @media (max-width: 639px) {
+        .meta {
+          flex-flow: row wrap;
+          padding: var(--spacing-lg) var(--spacing-md);
+          gap: var(--spacing-lg);
+        }
       }
 
       .meta .cell {
-        padding: 0 30px;
+        padding: 0 var(--spacing-lg);
         text-align: center;
         border-left: 1px solid var(--line);
+        flex: 1;
+        min-width: 180px;
+      }
+
+      @media (max-width: 639px) {
+        .meta .cell {
+          border-left: none;
+          padding: 0;
+          flex: 1 1 100%;
+        }
       }
 
       .meta .cell:first-child {
@@ -295,207 +303,381 @@
       }
 
       .meta .lab {
-        font-size: 9px;
-        letter-spacing: 0.22em;
+        font-size: clamp(9px, 2vw, 10px);
+        font-weight: 700;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--saffron);
-        font-weight: 700;
+        margin-bottom: var(--spacing-xs);
       }
 
       .meta .val {
         font-family: "Cormorant Garamond", serif;
-        font-size: 20px;
+        font-size: clamp(18px, 5vw, 22px);
         font-weight: 600;
         color: var(--brown);
-        margin-top: 3px;
+        line-height: 1.1;
       }
 
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* MAIN BODY                                       */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .body {
-        gap: 20px;
+        flex: 1 1 auto;
         display: flex;
-        flex: 1 1 auto;
-        padding: 20px 56px 18px;
         flex-direction: column;
+        gap: var(--spacing-xl);
+        padding: var(--spacing-lg) var(--spacing-lg);
+        position: relative;
       }
 
-      .cols {
-        display: grid;
-        grid-template-columns: 1.18fr 1fr;
-        gap: 0 38px;
-        flex: 1 1 auto;
+      @media (min-width: var(--bp-sm)) {
+        .body {
+          gap: var(--spacing-xl);
+          padding: var(--spacing-lg) var(--spacing-2xl);
+        }
       }
 
-      .col-right {
-        border-left: 1px solid var(--line);
-        padding-left: 38px;
+      .body-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 1;
       }
 
+      @media (max-width: 639px) {
+        .body-bg {
+          opacity: 0.6;
+        }
+      }
+
+      .body > section {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* SECTION HEADINGS                                */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .sec-head {
         display: flex;
         align-items: center;
-        gap: 11px;
-        margin-bottom: 13px;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+        flex-wrap: wrap;
       }
 
       .sec-head h2 {
         font-family: "Cormorant Garamond", serif;
         font-weight: 600;
-        font-size: 27px;
+        font-size: clamp(20px, 5vw, 27px);
         color: var(--saffron-deep);
-        line-height: 1.05;
         white-space: nowrap;
+        line-height: 1;
       }
 
       .sec-head .bar {
+        flex: 1;
+        min-width: 20px;
         height: 1px;
         background: var(--line);
-        flex: 1 1 auto;
       }
 
-      ol.agenda {
-        list-style: none;
-        counter-reset: a;
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* AGENDA TABLE                                    */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 2px;
       }
 
-      ol.agenda li {
-        counter-increment: a;
-        display: flex;
-        gap: 13px;
-        align-items: baseline;
-        padding: 7px 0;
-        border-bottom: 1px solid rgba(228, 210, 172, 0.6);
+      /* Webkit scrollbar styling (Chrome, Safari, Edge) */
+      .table-wrapper::-webkit-scrollbar {
+        height: 8px;
       }
 
-      ol.agenda li:last-child {
-        border-bottom: none;
+      .table-wrapper::-webkit-scrollbar-track {
+        background: rgba(217, 113, 43, 0.08);
+        border-radius: 4px;
       }
 
-      ol.agenda li::before {
-        content: counter(a, decimal-leading-zero);
-        font-family: "Cormorant Garamond", serif;
+      .table-wrapper::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+          180deg,
+          var(--saffron) 0%,
+          var(--gold) 100%
+        );
+        border-radius: 4px;
+        transition: background 0.3s ease;
+      }
+
+      .table-wrapper::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+          180deg,
+          var(--saffron-deep) 0%,
+          var(--gold) 100%
+        );
+      }
+
+      /* Firefox scrollbar styling */
+      .table-wrapper {
+        scrollbar-color: var(--saffron) rgba(217, 113, 43, 0.1);
+        scrollbar-width: thin;
+      }
+
+      @media (max-width: 639px) {
+        .table-wrapper {
+          margin: 0 -var(--spacing-lg);
+          padding: 0 var(--spacing-lg);
+        }
+      }
+
+      .agenda-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: clamp(11px, 2vw, 13.5px);
+        min-width: 700px;
+      }
+
+      @media (min-width: 640px) {
+        .agenda-table {
+          min-width: auto;
+        }
+      }
+
+      .agenda-table col.c-num {
+        width: 24px;
+      }
+
+      @media (min-width: var(--bp-sm)) {
+        .agenda-table col.c-num {
+          width: 32px;
+        }
+      }
+
+      .agenda-table col.c-time {
+        width: 80px;
+      }
+
+      @media (min-width: var(--bp-sm)) {
+        .agenda-table col.c-time {
+          width: 130px;
+        }
+      }
+
+      .agenda-table col.c-sess {
+        width: auto;
+        min-width: 100px;
+      }
+
+      .agenda-table col.c-spkr {
+        width: 120px;
+      }
+
+      @media (min-width: 640px) {
+        .agenda-table col.c-spkr {
+          width: 175px;
+        }
+      }
+
+      .agenda-table thead th {
+        font-size: clamp(8px, 2vw, 9.5px);
         font-weight: 700;
-        font-size: 16px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
         color: var(--saffron);
-        min-width: 22px;
-        flex: 0 0 22px;
-        line-height: 1.25;
+        padding: 0 var(--spacing-xs) var(--spacing-xs);
+        border-bottom: 1.5px solid var(--line);
+        text-align: left;
       }
 
-      ol.agenda li span {
-        font-size: 13.3px;
-        line-height: 1.26;
-        color: var(--brown);
-        font-weight: 500;
+      .agenda-table thead th:first-child {
+        padding-left: 0;
       }
 
-      ul.highlights {
-        list-style: none;
+      .agenda-table tbody tr {
+        border-bottom: 1px solid var(--line-soft);
       }
 
-      ul.highlights li {
-        display: flex;
-        gap: 11px;
-        align-items: baseline;
-        padding: 8px 0;
-        border-bottom: 1px solid rgba(228, 210, 172, 0.6);
-      }
-
-      ul.highlights li:last-child {
+      .agenda-table tbody tr:last-child {
         border-bottom: none;
       }
 
-      ul.highlights li::before {
+      .agenda-table tbody tr:nth-child(even) td {
+        background: rgba(217, 113, 43, 0.035);
+      }
+
+      .agenda-table tbody td {
+        padding: 8px var(--spacing-xs);
+        line-height: 1.4;
+        color: var(--brown);
+        vertical-align: middle;
+      }
+
+      .agenda-table tbody td:first-child {
+        padding-left: 0;
+      }
+
+      .agenda-table td.num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(12px, 3vw, 14px);
+        font-weight: 700;
+        color: var(--gold);
+        text-align: center;
+        white-space: nowrap;
+        line-height: 1;
+      }
+
+      .agenda-table td.time {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(12px, 3vw, 14px);
+        font-weight: 600;
+        color: var(--saffron-deep);
+        white-space: nowrap;
+      }
+
+      .agenda-table td.session {
+        font-weight: 600;
+      }
+
+      .agenda-table td.speaker {
+        font-style: italic;
+        color: #7a4f2e;
+        font-size: clamp(10px, 2vw, 12.5px);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* HIGHLIGHTS PILLS                                */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      .highlights-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        padding-top: var(--spacing-lg);
+        border-top: 1px solid var(--line);
+      }
+
+      .hl-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        background: rgba(217, 113, 43, 0.08);
+        border: 1px solid rgba(198, 138, 30, 0.3);
+        border-radius: 2px;
+        padding: 6px var(--spacing-sm) 6px 9px;
+        font-size: clamp(11px, 2vw, 12.5px);
+        font-weight: 600;
+        color: var(--brown);
+        line-height: 1.3;
+        transition:
+          background-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .hl-pill:hover {
+        background: rgba(217, 113, 43, 0.15);
+        transform: translateY(-1px);
+      }
+
+      .hl-pill::before {
         content: "";
-        flex: 0 0 6px;
-        width: 6px;
-        height: 6px;
+        width: 5px;
+        height: 5px;
+        min-width: 5px;
         background: var(--saffron);
         transform: rotate(45deg);
-        position: relative;
-        top: 1px;
+        flex-shrink: 0;
       }
 
-      ul.highlights li span {
-        font-size: 13.3px;
-        line-height: 1.26;
-        color: var(--brown);
-        font-weight: 500;
-      }
-
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* FOOTER                                          */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .imgband {
-        flex: 0 0 270px;
         position: relative;
+        min-height: 200px;
+        height: auto;
         overflow: hidden;
-        color: #fff;
+        display: flex;
+        align-items: flex-end;
       }
 
       .imgband__img {
         position: absolute;
         inset: 0;
-        background-image: url("./img/footer-hero.jpeg");
-        background-position: center 42%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        z-index: 1;
-        filter: brightness(85%);
+        background: url("./img/footer-hero.jpeg") center 42% / cover no-repeat;
+        filter: brightness(80%);
+        z-index: 0;
       }
 
-      .imgband::after {
-        content: "";
+      .imgband__overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
           180deg,
-          rgba(42, 26, 15, 0.1) 0%,
-          rgba(42, 26, 15, 0) 30%,
-          rgba(42, 26, 15, 0.55) 70%,
-          rgba(28, 16, 8, 0.93) 100%
+          rgba(40, 24, 12, 0.06) 0%,
+          rgba(40, 24, 12, 0) 25%,
+          rgba(40, 24, 12, 0.52) 65%,
+          rgba(22, 10, 4, 0.93) 100%
         );
         z-index: 1;
       }
 
       .contact {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 0 56px 24px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 24px;
+        position: relative;
         z-index: 2;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        padding: var(--spacing-2xl) var(--spacing-2xl);
+        gap: var(--spacing-2xl);
+        min-height: 120px;
       }
 
-      .contact__left .lab {
-        font-size: 15px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--gold-pale);
-        font-weight: 700;
+      @media (max-width: 639px) {
+        .contact {
+          flex-flow: column;
+          align-items: flex-start;
+          justify-content: flex-end;
+          padding: var(--spacing-lg) var(--spacing-lg);
+          min-height: auto;
+          gap: var(--spacing-lg);
+        }
       }
 
-      .contact__left .line {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 22px;
-        font-weight: 600;
-        color: #fff;
-        margin-top: 3px;
-        line-height: 1.1;
-        max-width: 300px;
+      .contact__left {
+        flex: 1;
       }
 
       .contact__right {
         text-align: right;
+        white-space: nowrap;
       }
 
+      .contact__left .lab,
       .contact__right .lab {
-        font-size: 15px;
-        letter-spacing: 2px;
+        font-size: clamp(9px, 2vw, 10.5px);
+        font-weight: 700;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--gold-pale);
-        font-weight: 700;
-        margin-bottom: 6px;
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .contact__left .line {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(18px, 5vw, 22px);
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.18;
       }
 
       .phones {
@@ -506,145 +688,280 @@
       }
 
       .phones span {
-        font-family: "Mulish", sans-serif;
-        font-size: 13px;
+        font-size: clamp(12px, 3vw, 14px);
         font-weight: 600;
         color: #fbefd9;
         white-space: nowrap;
       }
 
-      @media print {
-        @page {
-          size: A4;
-          margin: 0;
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* DECORATIVE BACKGROUND SVG                       */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      .dec {
+        fill: none;
+        stroke-linecap: round;
+      }
+
+      .gc {
+        fill: rgba(198, 138, 30, 0.08);
+        stroke: none;
+      }
+
+      .gs {
+        fill: none;
+        stroke: rgba(198, 138, 30, 0.13);
+      }
+
+      .ss {
+        fill: none;
+        stroke: rgba(217, 113, 43, 0.11);
+      }
+
+      .sf {
+        fill: rgba(217, 113, 43, 0.06);
+        stroke: none;
+      }
+
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* ACCESSIBILITY & PRINT                           */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
         }
-        html,
+      }
+
+      @media print {
         body {
           background: #fff;
           padding: 0;
         }
+
         .page {
           box-shadow: none;
+          max-width: 100%;
         }
-        .controls,
-        .status {
+
+        .body-bg {
+          display: none;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .kicker .rule {
+          display: none;
+        }
+
+        .sec-head .bar {
           display: none;
         }
       }
     </style>
   </head>
   <body>
-    <div class="controls">
-      <button class="btn-download" onclick="downloadPDF()">
-        📥 Download as PDF
-      </button>
-      <button class="btn-print" onclick="printToPDF()">🖨️ Print to PDF</button>
-    </div>
-    <div class="status" id="status"></div>
-
-    <div class="page" id="flyer-page">
-      <header class="head">
-        <div class="head__img"></div>
+    <div class="page">
+      <header class="head" role="banner">
+        <div class="head__img" aria-hidden="true"></div>
+        <div class="head__overlay" aria-hidden="true"></div>
         <div class="head__inner">
           <img
             class="logo"
             src="./img/logo.png"
-            alt="The Art of Living Logo"
+            alt="Temple of Knowledge / Art of Living"
             loading="lazy"
           />
-          <div>
-            <div class="kicker">
-              <span class="rule"></span>
-              TEMPLE OF KNOWLEDGE
-              <span class="dot"></span>
-              NAMO BUDDHA
-              <span class="rule"></span>
-            </div>
-            <div class="pres">presents the</div>
-            <h1>Corporate Wellness<br />Retreat <b>2026</b></h1>
-            <div class="tagline">
-              <span>RECHARGE</span>
-              <i></i>
-              <span>RENEW</span>
-              <i></i>
-              <span>REJUVENATE YOUR TEAM</span>
+          <div class="kicker" aria-label="Retreat location">
+            <span class="rule" aria-hidden="true"></span>
+            <span>TEMPLE OF KNOWLEDGE</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>NAMO BUDDHA</span>
+            <span class="rule" aria-hidden="true"></span>
+          </div>
+          <div class="head__titles">
+            <p class="pres">presents the</p>
+            <h1>Corporate Wellness <b>Retreat 2026</b></h1>
+            <div class="tagline" aria-label="Retreat themes">
+              <span>LEADERSHIP</span>
+              <i aria-hidden="true"></i>
+              <span>WELL-BEING</span>
+              <i aria-hidden="true"></i>
+              <span>MINDFUL PERFORMANCE</span>
             </div>
           </div>
         </div>
       </header>
 
+      <div class="meta">
+        <div class="cell">
+          <div class="lab">Date</div>
+          <div class="val">Saturday, June 6, 2026</div>
+        </div>
+        <div class="cell">
+          <div class="lab">Time</div>
+          <div class="val">10:00 AM – 2:30 PM</div>
+        </div>
+        <div class="cell">
+          <div class="lab">Venue</div>
+          <div class="val">Temple of Knowledge, Namo Buddha</div>
+        </div>
+      </div>
+
       <main class="body">
-        <div class="meta">
-          <div class="cell">
-            <div class="lab">Date</div>
-            <div class="val">Saturday, June 6, 2026</div>
-          </div>
-          <div class="cell">
-            <div class="lab">Time</div>
-            <div class="val">10:00 AM – 2:30 PM</div>
-          </div>
-          <div class="cell">
-            <div class="lab">Venue</div>
-            <div class="val">Namo Buddha, Nepal</div>
-          </div>
-        </div>
+        <svg
+          class="body-bg"
+          id="decorative-bg"
+          viewBox="0 0 860 620"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        ></svg>
 
-        <div class="cols">
-          <section class="col-left">
-            <div class="sec-head">
-              <h2>Program Agenda</h2>
-              <span class="bar"></span>
-            </div>
-            <ol class="agenda">
-              <li><span>Welcome &amp; Introduction</span></li>
-              <li>
-                <span>The Temple of Knowledge: Vision &amp; Purpose</span>
-              </li>
-              <li>
-                <span
-                  >Art of Living: Global Impact &amp; Organisational
-                  Well-being</span
-                >
-              </li>
-              <li>
-                <span>Workplace Wellness for Sustainable Performance</span>
-              </li>
-              <li><span>Meditation &amp; Mindfulness Experience</span></li>
-              <li>
-                <span>Corporate Retreat Experience at Temple of Knowledge</span>
-              </li>
-              <li>
-                <span>Leadership, Learning &amp; Institutional Impact</span>
-              </li>
-              <li><span>Open Discussion &amp; Q&amp;A</span></li>
-              <li><span>Closing Remarks</span></li>
-            </ol>
-          </section>
+        <section>
+          <div class="sec-head">
+            <h2>Program Agenda</h2>
+            <span class="bar" aria-hidden="true"></span>
+          </div>
+          <div class="table-wrapper">
+            <table class="agenda-table">
+              <colgroup>
+                <col class="c-num" />
+                <col class="c-time" />
+                <col class="c-sess" />
+                <col class="c-spkr" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Session</th>
+                  <th scope="col">Speaker</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="num">01</td>
+                  <td class="time">10:00 – 10:15 AM</td>
+                  <td class="session">Welcome &amp; Opening Remarks</td>
+                  <td class="speaker">Bijay ji</td>
+                </tr>
+                <tr>
+                  <td class="num">02</td>
+                  <td class="time">10:15 – 10:35 AM</td>
+                  <td class="session">
+                    Temple of Knowledge: Vision, Purpose &amp; Future Direction
+                  </td>
+                  <td class="speaker">S.K. Ji</td>
+                </tr>
+                <tr>
+                  <td class="num">03</td>
+                  <td class="time">10:35 – 11:00 AM</td>
+                  <td class="session">
+                    Art of Living: Global Vision, Local Impact
+                  </td>
+                  <td class="speaker">Sashi Raj Ji</td>
+                </tr>
+                <tr>
+                  <td class="num">04</td>
+                  <td class="time">11:00 – 11:35 AM</td>
+                  <td class="session">
+                    Corporate Wellness &amp; Retreat Experience at Temple of
+                    Knowledge
+                  </td>
+                  <td class="speaker">Neeva M. Pradhan</td>
+                </tr>
+                <tr>
+                  <td class="num">05</td>
+                  <td class="time">11:35 – 12:05 PM</td>
+                  <td class="session">
+                    Guided Meditation &amp; Mindfulness Experience
+                  </td>
+                  <td class="speaker">—</td>
+                </tr>
+                <tr>
+                  <td class="num">06</td>
+                  <td class="time">12:05 – 12:45 PM</td>
+                  <td class="session">
+                    Corporate Culture, Human Values &amp; Why Invest in Human
+                    Capital
+                  </td>
+                  <td class="speaker">
+                    Mr. Tenzin Sonam Gonsar, CEO, Team Ventures
+                  </td>
+                </tr>
+                <tr>
+                  <td class="num">07</td>
+                  <td class="time">12:45 – 1:15 PM</td>
+                  <td class="session">
+                    Open Discussion &amp; Interactive Q&amp;A
+                  </td>
+                  <td class="speaker">—</td>
+                </tr>
+                <tr>
+                  <td class="num">08</td>
+                  <td class="time">1:15 – 1:25 PM</td>
+                  <td class="session">Token of Appreciation</td>
+                  <td class="speaker">S.K. Ji &amp; Rajesh B. Pradhan</td>
+                </tr>
+                <tr>
+                  <td class="num">09</td>
+                  <td class="time">1:25 – 1:35 PM</td>
+                  <td class="session">Closing Remarks &amp; Next Steps</td>
+                  <td class="speaker">Organizing Team</td>
+                </tr>
+                <tr>
+                  <td class="num">10</td>
+                  <td class="time">1:35 – 2:30 PM</td>
+                  <td class="session">
+                    Networking Lunch &amp; Informal Interactions
+                  </td>
+                  <td class="speaker">All Participants</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-          <section class="col-right">
-            <div class="sec-head">
-              <h2>Retreat Highlights</h2>
-              <span class="bar"></span>
-            </div>
-            <ul class="highlights">
-              <li><span>Tapping Your Inner Potential</span></li>
-              <li><span>Mindfulness &amp; Nature of the Mind</span></li>
-              <li><span>Essence of Meditation</span></li>
-              <li><span>Stress Management &amp; Emotional Balance</span></li>
-              <li><span>Healthy Organic Lunch</span></li>
-              <li><span>Nature Walk &amp; Temple Tour</span></li>
-              <li><span>Tea Break Amidst Nature</span></li>
-            </ul>
-          </section>
-        </div>
+        <section>
+          <div class="sec-head">
+            <h2>Session Highlights</h2>
+            <span class="bar" aria-hidden="true"></span>
+          </div>
+          <div class="highlights-strip">
+            <span class="hl-pill">Greetings &amp; Retreat Expectations</span>
+            <span class="hl-pill"
+              >Vision for Leadership &amp; Transformation</span
+            >
+            <span class="hl-pill"
+              >180+ Countries — Human Values &amp; Impact</span
+            >
+            <span class="hl-pill"
+              >Wellness, Resilience &amp; Leadership Programs</span
+            >
+            <span class="hl-pill"
+              >Practical Meditation &amp; Stress Reduction</span
+            >
+            <span class="hl-pill">People-Centric Organisations</span>
+            <span class="hl-pill"
+              >Investing in Employee Well-being &amp; Growth</span
+            >
+            <span class="hl-pill">Participant Reflections &amp; Q&amp;A</span>
+            <span class="hl-pill">Networking Lunch</span>
+          </div>
+        </section>
       </main>
 
       <footer class="imgband">
         <div class="imgband__img"></div>
+        <div class="imgband__overlay"></div>
         <div class="contact">
           <div class="contact__left">
-            <div class="lab">Reserve your place</div>
-            <div class="line">A day of stillness, away from the desk.</div>
+            <div class="lab"></div>
+            <div class="line">
+              A day of stillness,<br />
+              away from the desk.
+            </div>
           </div>
           <div class="contact__right">
             <div class="lab">Contact</div>
@@ -659,81 +976,252 @@
     </div>
 
     <script>
-      const { jsPDF } = window.jspdf;
+      // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      // SVG DECORATION CONSTANTS
+      // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-      function showStatus(message, type = "info") {
-        const statusEl = document.getElementById("status");
-        statusEl.textContent = message;
-        statusEl.className = `status show ${type}`;
+      const PETAL_PATH = "M0,-28 C8,-14 8,14 0,28 C-8,14 -8,-14 0,-28Z";
+
+      const LOTUS_PATTERNS = {
+        lotus12: [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330],
+        lotus8: [0, 45, 90, 135, 180, 225, 270, 315],
+      };
+
+      const MANDALA_LARGE = {
+        position: { x: 760, y: 310 },
+        rings: [130, 108, 86],
+        scale: 2.4,
+        type: "lotus12",
+      };
+
+      const MANDALA_SMALL = {
+        position: { x: 62, y: 68 },
+        rings: [56, 42],
+        scale: 1.3,
+        type: "lotus8",
+      };
+
+      const MANDALA_MEDIUM = {
+        position: { x: 80, y: 530 },
+        rings: [78, 60],
+        scale: 1.6,
+        type: "lotus12",
+      };
+
+      const DECORATIVE_ELEMENTS = {
+        diamonds: [
+          { x: 390, y: 28, size: 8 },
+          { x: 200, y: 480, size: 6 },
+          { x: 640, y: 555, size: 7 },
+          { x: 460, y: 540, size: 5 },
+          { x: 310, y: 20, size: 5 },
+        ],
+        lines: [
+          { x1: 56, y1: 8, x2: 804, y2: 8 },
+          { x1: 56, y1: 612, x2: 804, y2: 612 },
+        ],
+      };
+
+      // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      // UTILITY FUNCTIONS
+      // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+      function createElementNS(tag, attrs = {}) {
+        const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.entries(attrs).forEach(([key, value]) => {
+          el.setAttribute(key, value);
+        });
+        return el;
       }
 
-      function printToPDF() {
-        showStatus("📖 Opening print dialog...");
-        window.print();
+      function createPetalGroup(rotations, scale = 1) {
+        const group = createElementNS("g", {
+          class: "gc",
+          transform: `scale(${scale})`,
+        });
+        const defs =
+          document.querySelector("#decorative-bg defs") ||
+          createElementNS("defs");
+
+        rotations.forEach((angle) => {
+          const use = createElementNS("use", {
+            href: "#petal",
+            transform: `rotate(${angle})`,
+          });
+          group.appendChild(use);
+        });
+
+        return group;
       }
 
-      async function downloadPDF() {
-        const button = event.target;
-        const originalText = button.textContent;
-        button.disabled = true;
-        button.textContent = "⏳ Processing...";
+      function createMandala(config) {
+        const group = createElementNS("g", {
+          transform: `translate(${config.position.x},${config.position.y})`,
+        });
 
-        try {
-          showStatus("⏳ Capturing page content...");
-
-          if (typeof html2canvas === "undefined") {
-            throw new Error("html2canvas not loaded");
-          }
-          if (typeof jsPDF === "undefined") {
-            throw new Error("jsPDF not loaded");
-          }
-
-          const element = document.getElementById("flyer-page");
-          const canvas = await html2canvas(element, {
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: "#faf1de",
-            logging: false,
-          });
-
-          showStatus("📄 Creating PDF...");
-
-          const imgData = canvas.toDataURL("image/jpeg", 0.95);
-          const pdf = new jsPDF({
-            orientation: "portrait",
-            unit: "mm",
-            format: "a4",
-            compress: true,
-          });
-
-          const pdfWidth = pdf.internal.pageSize.getWidth();
-          const pdfHeight = pdf.internal.pageSize.getHeight();
-
-          pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-          pdf.save("TOK-Corporate-Wellness-Retreat-2026.pdf");
-
-          showStatus("✅ PDF downloaded successfully!", "success");
-          button.textContent = originalText;
-          button.disabled = false;
-        } catch (error) {
-          console.error("Error:", error);
-          showStatus(
-            "❌ Error: " +
-              error.message +
-              ' — Try "Print to PDF" button instead',
-            "error",
+        // Rings
+        config.rings.forEach((radius) => {
+          group.appendChild(
+            createElementNS("circle", {
+              r: radius,
+              class: "gs",
+              "stroke-width": "0.4",
+            }),
           );
-          button.textContent = originalText;
-          button.disabled = false;
-        }
+        });
+
+        // Spokes (simplified)
+        const spokeGroup = createElementNS("g", {
+          class: "ss",
+          "stroke-width": "0.5",
+        });
+
+        const maxR = config.rings[0];
+        const spokes = [
+          { x1: 0, y1: -maxR, x2: 0, y2: maxR },
+          { x1: -maxR, y1: 0, x2: maxR, y2: 0 },
+        ];
+
+        spokes.forEach((spoke) => {
+          spokeGroup.appendChild(createElementNS("line", spoke));
+        });
+
+        group.appendChild(spokeGroup);
+
+        // Lotus petals
+        const lotusRotations = LOTUS_PATTERNS[config.type];
+        group.appendChild(createPetalGroup(lotusRotations, config.scale));
+
+        // Center dot
+        group.appendChild(
+          createElementNS("circle", {
+            r: "4",
+            fill: "rgba(198,138,30,0.09)",
+          }),
+        );
+
+        return group;
       }
 
-      window.addEventListener("load", () => {
-        console.log("✅ Page loaded");
-        console.log("html2canvas:", typeof html2canvas !== "undefined");
-        console.log("jsPDF:", typeof jsPDF !== "undefined");
-      });
+      function createDiamond(diamond) {
+        return createElementNS("rect", {
+          x: diamond.x,
+          y: diamond.y,
+          width: diamond.size,
+          height: diamond.size,
+          fill: "rgba(198,138,30,0.09)",
+          transform: `rotate(45,${diamond.x + diamond.size / 2},${diamond.y + diamond.size / 2})`,
+        });
+      }
+
+      // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      // MAIN INITIALIZATION
+      // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+      function initializeDecorations() {
+        const svg = document.getElementById("decorative-bg");
+        if (!svg) return;
+
+        // Create defs with petal pattern
+        const defs = createElementNS("defs");
+        const petalPath = createElementNS("path", {
+          id: "petal",
+          d: PETAL_PATH,
+        });
+        defs.appendChild(petalPath);
+        svg.appendChild(defs);
+
+        // Add large mandala
+        svg.appendChild(createMandala(MANDALA_LARGE));
+
+        // Add small mandala
+        svg.appendChild(createMandala(MANDALA_SMALL));
+
+        // Add medium mandala
+        svg.appendChild(createMandala(MANDALA_MEDIUM));
+
+        // Add decorative diamonds
+        const diamondGroup = createElementNS("g");
+        DECORATIVE_ELEMENTS.diamonds.forEach((diamond) => {
+          diamondGroup.appendChild(createDiamond(diamond));
+        });
+        svg.appendChild(diamondGroup);
+
+        // Add decorative lines
+        DECORATIVE_ELEMENTS.lines.forEach((line) => {
+          svg.appendChild(
+            createElementNS("line", {
+              ...line,
+              stroke: "rgba(198,138,30,0.10)",
+              "stroke-width": "0.6",
+              "stroke-dasharray": "4 6",
+            }),
+          );
+        });
+
+        // Add corner ornaments
+        const corners = createElementNS("g", {
+          stroke: "rgba(198,138,30,0.13)",
+          "stroke-width": "0.8",
+          fill: "none",
+        });
+
+        const cornerPaths = [
+          "M804,8 L804,42 M804,8 L770,8",
+          "M56,8  L56,42  M56,8  L90,8",
+          "M804,612 L804,578 M804,612 L770,612",
+          "M56,612 L56,578  M56,612 L90,612",
+        ];
+
+        cornerPaths.forEach((path) => {
+          corners.appendChild(createElementNS("path", { d: path }));
+        });
+
+        svg.appendChild(corners);
+
+        // Add subtle center watermark
+        const watermark = createElementNS("g", {
+          transform: "translate(430,52)",
+          opacity: "0.7",
+        });
+
+        watermark.appendChild(createPetalGroup(LOTUS_PATTERNS.lotus8, 0.7));
+        watermark.appendChild(
+          createElementNS("circle", {
+            r: "3",
+            fill: "rgba(198,138,30,0.08)",
+          }),
+        );
+
+        svg.appendChild(watermark);
+
+        // Add OM-inspired arcs
+        const arcs = createElementNS("g", {
+          transform: "translate(840,180)",
+          fill: "none",
+          stroke: "rgba(217,113,43,0.08)",
+          "stroke-width": "0.7",
+        });
+
+        const arcPaths = [
+          "M-30,0 A30,30 0 0,1 30,0",
+          "M-46,0 A46,46 0 0,1 46,0",
+          "M-60,0 A60,60 0 0,1 60,0",
+        ];
+
+        arcPaths.forEach((path) => {
+          arcs.appendChild(createElementNS("path", { d: path }));
+        });
+
+        svg.appendChild(arcs);
+      }
+
+      // Initialize when DOM is ready
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initializeDecorations);
+      } else {
+        initializeDecorations();
+      }
     </script>
   </body>
 </html>
