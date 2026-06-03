@@ -1162,17 +1162,14 @@
 
       function createPetalGroup(rotations, scale = 1) {
         const group = createElementNS("g", {
-          class: "gc",
           transform: `scale(${scale})`,
         });
-        const defs =
-          document.querySelector("#decorative-bg defs") ||
-          createElementNS("defs");
 
         rotations.forEach((angle) => {
           const use = createElementNS("use", {
             href: "#petal",
             transform: `rotate(${angle})`,
+            fill: "rgba(217, 113, 43, 0.12)",
           });
           group.appendChild(use);
         });
@@ -1190,16 +1187,18 @@
           group.appendChild(
             createElementNS("circle", {
               r: radius,
-              class: "gs",
-              "stroke-width": "0.4",
+              fill: "none",
+              stroke: "rgba(198, 138, 30, 0.12)",
+              "stroke-width": "0.5",
             }),
           );
         });
 
         // Spokes (simplified)
         const spokeGroup = createElementNS("g", {
-          class: "ss",
-          "stroke-width": "0.5",
+          fill: "none",
+          stroke: "rgba(217, 113, 43, 0.12)",
+          "stroke-width": "0.6",
         });
 
         const maxR = config.rings[0];
@@ -1222,7 +1221,7 @@
         group.appendChild(
           createElementNS("circle", {
             r: "4",
-            fill: "rgba(198,138,30,0.09)",
+            fill: "rgba(217, 113, 43, 0.1)",
           }),
         );
 
@@ -1235,7 +1234,7 @@
           y: diamond.y,
           width: diamond.size,
           height: diamond.size,
-          fill: "rgba(198,138,30,0.09)",
+          fill: "rgba(217, 113, 43, 0.08)",
           transform: `rotate(45,${diamond.x + diamond.size / 2},${diamond.y + diamond.size / 2})`,
         });
       }
@@ -1248,11 +1247,12 @@
         const svg = document.getElementById("decorative-bg");
         if (!svg) return;
 
-        // Create defs with petal pattern
+        // Create defs with petal pattern - with explicit fill (dimmed)
         const defs = createElementNS("defs");
         const petalPath = createElementNS("path", {
           id: "petal",
           d: PETAL_PATH,
+          fill: "rgba(217, 113, 43, 0.12)",
         });
         defs.appendChild(petalPath);
         svg.appendChild(defs);
@@ -1273,49 +1273,49 @@
         });
         svg.appendChild(diamondGroup);
 
-        // Add decorative lines
-        DECORATIVE_ELEMENTS.lines.forEach((line) => {
-          svg.appendChild(
-            createElementNS("line", {
-              ...line,
-              stroke: "rgba(198,138,30,0.10)",
-              "stroke-width": "0.6",
-              "stroke-dasharray": "4 6",
-            }),
-          );
-        });
+        // Add decorative lines - REMOVED for cleaner look
+        // DECORATIVE_ELEMENTS.lines.forEach((line) => {
+        //   svg.appendChild(
+        //     createElementNS("line", {
+        //       ...line,
+        //       stroke: "rgba(217, 113, 43, 0.35)",
+        //       "stroke-width": "1.2",
+        //       "stroke-dasharray": "4 6",
+        //     }),
+        //   );
+        // });
 
-        // Add corner ornaments
-        const corners = createElementNS("g", {
-          stroke: "rgba(198,138,30,0.13)",
-          "stroke-width": "0.8",
-          fill: "none",
-        });
+        // Add corner ornaments - REMOVED for cleaner look
+        // const corners = createElementNS("g", {
+        //   stroke: "rgba(217, 113, 43, 0.4)",
+        //   "stroke-width": "1.2",
+        //   fill: "none",
+        // });
 
-        const cornerPaths = [
-          "M804,8 L804,42 M804,8 L770,8",
-          "M56,8  L56,42  M56,8  L90,8",
-          "M804,612 L804,578 M804,612 L770,612",
-          "M56,612 L56,578  M56,612 L90,612",
-        ];
+        // const cornerPaths = [
+        //   "M804,8 L804,42 M804,8 L770,8",
+        //   "M56,8  L56,42  M56,8  L90,8",
+        //   "M804,612 L804,578 M804,612 L770,612",
+        //   "M56,612 L56,578  M56,612 L90,612",
+        // ];
 
-        cornerPaths.forEach((path) => {
-          corners.appendChild(createElementNS("path", { d: path }));
-        });
+        // cornerPaths.forEach((path) => {
+        //   corners.appendChild(createElementNS("path", { d: path }));
+        // });
 
-        svg.appendChild(corners);
+        // svg.appendChild(corners);
 
         // Add subtle center watermark
         const watermark = createElementNS("g", {
           transform: "translate(430,52)",
-          opacity: "0.7",
+          opacity: "0.6",
         });
 
-        watermark.appendChild(createPetalGroup(LOTUS_PATTERNS.lotus8, 0.7));
+        watermark.appendChild(createPetalGroup(LOTUS_PATTERNS.lotus8, 0.6));
         watermark.appendChild(
           createElementNS("circle", {
             r: "3",
-            fill: "rgba(198,138,30,0.08)",
+            fill: "rgba(217, 113, 43, 0.08)",
           }),
         );
 
@@ -1325,8 +1325,8 @@
         const arcs = createElementNS("g", {
           transform: "translate(840,180)",
           fill: "none",
-          stroke: "rgba(217,113,43,0.08)",
-          "stroke-width": "0.7",
+          stroke: "rgba(217, 113, 43, 0.1)",
+          "stroke-width": "0.6",
         });
 
         const arcPaths = [
