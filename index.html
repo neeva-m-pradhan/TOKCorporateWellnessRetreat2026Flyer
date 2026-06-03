@@ -1,14 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Temple of Knowledge Corporate Wellness Retreat 2026"
-    />
+    <meta name="description" content="Temple of Knowledge Corporate Wellness Retreat 2026" />
     <meta name="theme-color" content="#faf1de" />
     <title>TOK Corporate Wellness Retreat 2026 — Flyer</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23d9712b' width='100' height='100'/%3E%3Ctext x='50' y='65' font-size='42' font-weight='bold' fill='%23e8cb80' text-anchor='middle' font-family='Cormorant Garamond, serif'%3EAOL%3C/text%3E%3C/svg%3E" />
 
     <!-- Font optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -66,12 +66,7 @@
           #c5b690 40%,
           #b8945f 100%
         );
-        font-family:
-          "Mulish",
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          sans-serif;
+        font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         color: var(--brown);
         display: flex;
         flex-direction: column;
@@ -79,6 +74,12 @@
         min-height: 100vh;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+      }
+
+      @media (min-width: var(--bp-sm)) {
+        body {
+          padding: var(--spacing-lg);
+        }
       }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -161,27 +162,33 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: var(--spacing-lg) var(--spacing-lg);
+        padding: var(--spacing-lg) var(--spacing-md);
         width: 100%;
       }
 
       @media (min-width: var(--bp-sm)) {
         .head__inner {
-          padding: var(--spacing-xl) var(--spacing-2xl);
+          padding: var(--spacing-xl) var(--spacing-lg);
         }
       }
 
       .logo {
         height: 40px;
         width: auto;
-        margin-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
         filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.5));
+        transition: transform 0.3s ease;
       }
 
       @media (min-width: var(--bp-sm)) {
         .logo {
           height: 50px;
+          margin-bottom: var(--spacing-lg);
         }
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
       }
 
       /* Kicker (decorative label) */
@@ -269,7 +276,7 @@
         flex-flow: row;
         justify-content: center;
         padding: var(--spacing-lg) 0;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1.5px solid var(--line);
         background: var(--cream);
         gap: 0;
       }
@@ -277,8 +284,8 @@
       @media (max-width: 639px) {
         .meta {
           flex-flow: row wrap;
-          padding: var(--spacing-lg) var(--spacing-md);
-          gap: var(--spacing-lg);
+          padding: var(--spacing-md) var(--spacing-md);
+          gap: var(--spacing-md);
         }
       }
 
@@ -287,7 +294,8 @@
         text-align: center;
         border-left: 1px solid var(--line);
         flex: 1;
-        min-width: 180px;
+        min-width: 150px;
+        transition: opacity 0.2s ease;
       }
 
       @media (max-width: 639px) {
@@ -308,26 +316,26 @@
         letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--saffron);
-        margin-bottom: var(--spacing-xs);
+        margin-bottom: 4px;
       }
 
       .meta .val {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(18px, 5vw, 22px);
+        font-size: clamp(16px, 5vw, 22px);
         font-weight: 600;
         color: var(--brown);
-        line-height: 1.1;
+        line-height: 1.2;
       }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       /* MAIN BODY                                       */
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .body {
-        flex: 1 1 auto;
         display: flex;
+        flex: 1 1 auto;
         flex-direction: column;
-        gap: var(--spacing-xl);
-        padding: var(--spacing-lg) var(--spacing-lg);
+        gap: var(--spacing-lg);
+        padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-xl);
         position: relative;
       }
 
@@ -343,9 +351,9 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        pointer-events: none;
         z-index: 0;
-        opacity: 1;
+        opacity: 0.75;
+        pointer-events: none;
       }
 
       @media (max-width: 639px) {
@@ -364,26 +372,27 @@
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .sec-head {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: var(--spacing-sm);
-        margin-bottom: var(--spacing-lg);
-        flex-wrap: wrap;
       }
 
       .sec-head h2 {
         font-family: "Cormorant Garamond", serif;
         font-weight: 600;
-        font-size: clamp(20px, 5vw, 27px);
+        font-size: clamp(20px, 5vw, 28px);
         color: var(--saffron-deep);
         white-space: nowrap;
         line-height: 1;
+        letter-spacing: 0.5px;
       }
 
       .sec-head .bar {
         flex: 1;
         min-width: 20px;
-        height: 1px;
-        background: var(--line);
+        height: 2px;
+        background: var(--saffron);
+        opacity: 0.6;
       }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -407,21 +416,13 @@
       }
 
       .table-wrapper::-webkit-scrollbar-thumb {
-        background: linear-gradient(
-          180deg,
-          var(--saffron) 0%,
-          var(--gold) 100%
-        );
+        background: linear-gradient(180deg, var(--saffron) 0%, var(--gold) 100%);
         border-radius: 4px;
         transition: background 0.3s ease;
       }
 
       .table-wrapper::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(
-          180deg,
-          var(--saffron-deep) 0%,
-          var(--gold) 100%
-        );
+        background: linear-gradient(180deg, var(--saffron-deep) 0%, var(--gold) 100%);
       }
 
       /* Firefox scrollbar styling */
@@ -513,8 +514,8 @@
       }
 
       .agenda-table tbody td {
-        padding: 8px var(--spacing-xs);
-        line-height: 1.4;
+        padding: 9px var(--spacing-xs);
+        line-height: 1.45;
         color: var(--brown);
         vertical-align: middle;
       }
@@ -530,7 +531,7 @@
         color: var(--gold);
         text-align: center;
         white-space: nowrap;
-        line-height: 1;
+        line-height: 1.2;
       }
 
       .agenda-table td.time {
@@ -543,6 +544,7 @@
 
       .agenda-table td.session {
         font-weight: 600;
+        line-height: 1.45;
       }
 
       .agenda-table td.speaker {
@@ -551,49 +553,7 @@
         font-size: clamp(10px, 2vw, 12.5px);
         word-wrap: break-word;
         overflow-wrap: break-word;
-      }
-
-      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-      /* HIGHLIGHTS PILLS                                */
-      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-      .highlights-strip {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-        padding-top: var(--spacing-lg);
-        border-top: 1px solid var(--line);
-      }
-
-      .hl-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-xs);
-        background: rgba(217, 113, 43, 0.08);
-        border: 1px solid rgba(198, 138, 30, 0.3);
-        border-radius: 2px;
-        padding: 6px var(--spacing-sm) 6px 9px;
-        font-size: clamp(11px, 2vw, 12.5px);
-        font-weight: 600;
-        color: var(--brown);
-        line-height: 1.3;
-        transition:
-          background-color 0.2s ease,
-          transform 0.2s ease;
-      }
-
-      .hl-pill:hover {
-        background: rgba(217, 113, 43, 0.15);
-        transform: translateY(-1px);
-      }
-
-      .hl-pill::before {
-        content: "";
-        width: 5px;
-        height: 5px;
-        min-width: 5px;
-        background: var(--saffron);
-        transform: rotate(45deg);
-        flex-shrink: 0;
+        line-height: 1.4;
       }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -601,7 +561,7 @@
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .imgband {
         position: relative;
-        min-height: 200px;
+        min-height: 160px;
         height: auto;
         overflow: hidden;
         display: flex;
@@ -637,9 +597,9 @@
         justify-content: space-between;
         align-items: flex-end;
         width: 100%;
-        padding: var(--spacing-2xl) var(--spacing-2xl);
-        gap: var(--spacing-2xl);
-        min-height: 120px;
+        padding: var(--spacing-lg) var(--spacing-lg);
+        gap: var(--spacing-lg);
+        min-height: auto;
       }
 
       @media (max-width: 639px) {
@@ -647,9 +607,8 @@
           flex-flow: column;
           align-items: flex-start;
           justify-content: flex-end;
-          padding: var(--spacing-lg) var(--spacing-lg);
-          min-height: auto;
-          gap: var(--spacing-lg);
+          padding: var(--spacing-md) var(--spacing-md);
+          gap: var(--spacing-md);
         }
       }
 
@@ -664,12 +623,12 @@
 
       .contact__left .lab,
       .contact__right .lab {
-        font-size: clamp(9px, 2vw, 10.5px);
+        font-size: clamp(8px, 2vw, 9.5px);
         font-weight: 700;
         letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--gold-pale);
-        margin-bottom: var(--spacing-xs);
+        margin-bottom: 4px;
       }
 
       .contact__left .line {
@@ -677,7 +636,8 @@
         font-size: clamp(18px, 5vw, 22px);
         font-weight: 600;
         color: #fff;
-        line-height: 1.18;
+        line-height: 1.25;
+        letter-spacing: 0.3px;
       }
 
       .phones {
@@ -688,10 +648,11 @@
       }
 
       .phones span {
-        font-size: clamp(12px, 3vw, 14px);
+        font-size: clamp(11px, 3vw, 13px);
         font-weight: 600;
         color: #fbefd9;
         white-space: nowrap;
+        letter-spacing: 0.2px;
       }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -781,7 +742,9 @@
           </div>
           <div class="head__titles">
             <p class="pres">presents the</p>
-            <h1>Corporate Wellness <b>Retreat 2026</b></h1>
+            <h1>
+              Corporate Wellness <b>Retreat 2026</b>
+            </h1>
             <div class="tagline" aria-label="Retreat themes">
               <span>LEADERSHIP</span>
               <i aria-hidden="true"></i>
@@ -849,53 +812,37 @@
                 <tr>
                   <td class="num">02</td>
                   <td class="time">10:15 – 10:35 AM</td>
-                  <td class="session">
-                    Temple of Knowledge: Vision, Purpose &amp; Future Direction
-                  </td>
+                  <td class="session">Temple of Knowledge: Vision, Purpose &amp; Future Direction</td>
                   <td class="speaker">S.K. Ji</td>
                 </tr>
                 <tr>
                   <td class="num">03</td>
                   <td class="time">10:35 – 11:00 AM</td>
-                  <td class="session">
-                    Art of Living: Global Vision, Local Impact
-                  </td>
+                  <td class="session">Art of Living: Global Vision, Local Impact</td>
                   <td class="speaker">Sashi Raj Ji</td>
                 </tr>
                 <tr>
                   <td class="num">04</td>
                   <td class="time">11:00 – 11:35 AM</td>
-                  <td class="session">
-                    Corporate Wellness &amp; Retreat Experience at Temple of
-                    Knowledge
-                  </td>
+                  <td class="session">Corporate Wellness &amp; Retreat Experience at Temple of Knowledge</td>
                   <td class="speaker">Neeva M. Pradhan</td>
                 </tr>
                 <tr>
                   <td class="num">05</td>
                   <td class="time">11:35 – 12:05 PM</td>
-                  <td class="session">
-                    Guided Meditation &amp; Mindfulness Experience
-                  </td>
+                  <td class="session">Guided Meditation &amp; Mindfulness Experience</td>
                   <td class="speaker">—</td>
                 </tr>
                 <tr>
                   <td class="num">06</td>
                   <td class="time">12:05 – 12:45 PM</td>
-                  <td class="session">
-                    Corporate Culture, Human Values &amp; Why Invest in Human
-                    Capital
-                  </td>
-                  <td class="speaker">
-                    Mr. Tenzin Sonam Gonsar, CEO, Team Ventures
-                  </td>
+                  <td class="session">Corporate Culture, Human Values &amp; Why Invest in Human Capital</td>
+                  <td class="speaker">Mr. Tenzin Sonam Gonsar, CEO, Team Ventures</td>
                 </tr>
                 <tr>
                   <td class="num">07</td>
                   <td class="time">12:45 – 1:15 PM</td>
-                  <td class="session">
-                    Open Discussion &amp; Interactive Q&amp;A
-                  </td>
+                  <td class="session">Open Discussion &amp; Interactive Q&amp;A</td>
                   <td class="speaker">—</td>
                 </tr>
                 <tr>
@@ -913,43 +860,12 @@
                 <tr>
                   <td class="num">10</td>
                   <td class="time">1:35 – 2:30 PM</td>
-                  <td class="session">
-                    Networking Lunch &amp; Informal Interactions
-                  </td>
+                  <td class="session">Networking Lunch &amp; Informal Interactions</td>
                   <td class="speaker">All Participants</td>
                 </tr>
               </tbody>
             </table>
           </div>
-        </section>
-
-        <section>
-          <div class="sec-head">
-            <h2>Session Highlights</h2>
-            <span class="bar" aria-hidden="true"></span>
-          </div>
-          <div class="highlights-strip">
-            <span class="hl-pill">Greetings &amp; Retreat Expectations</span>
-            <span class="hl-pill"
-              >Vision for Leadership &amp; Transformation</span
-            >
-            <span class="hl-pill"
-              >180+ Countries — Human Values &amp; Impact</span
-            >
-            <span class="hl-pill"
-              >Wellness, Resilience &amp; Leadership Programs</span
-            >
-            <span class="hl-pill"
-              >Practical Meditation &amp; Stress Reduction</span
-            >
-            <span class="hl-pill">People-Centric Organisations</span>
-            <span class="hl-pill"
-              >Investing in Employee Well-being &amp; Growth</span
-            >
-            <span class="hl-pill">Participant Reflections &amp; Q&amp;A</span>
-            <span class="hl-pill">Networking Lunch</span>
-          </div>
-        </section>
       </main>
 
       <footer class="imgband">
@@ -980,7 +896,7 @@
       // SVG DECORATION CONSTANTS
       // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-      const PETAL_PATH = "M0,-28 C8,-14 8,14 0,28 C-8,14 -8,-14 0,-28Z";
+      const PETAL_PATH = 'M0,-28 C8,-14 8,14 0,28 C-8,14 -8,-14 0,-28Z';
 
       const LOTUS_PATTERNS = {
         lotus12: [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330],
@@ -991,21 +907,21 @@
         position: { x: 760, y: 310 },
         rings: [130, 108, 86],
         scale: 2.4,
-        type: "lotus12",
+        type: 'lotus12',
       };
 
       const MANDALA_SMALL = {
         position: { x: 62, y: 68 },
         rings: [56, 42],
         scale: 1.3,
-        type: "lotus8",
+        type: 'lotus8',
       };
 
       const MANDALA_MEDIUM = {
         position: { x: 80, y: 530 },
         rings: [78, 60],
         scale: 1.6,
-        type: "lotus12",
+        type: 'lotus12',
       };
 
       const DECORATIVE_ELEMENTS = {
@@ -1027,7 +943,7 @@
       // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
       function createElementNS(tag, attrs = {}) {
-        const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
         Object.entries(attrs).forEach(([key, value]) => {
           el.setAttribute(key, value);
         });
@@ -1035,18 +951,13 @@
       }
 
       function createPetalGroup(rotations, scale = 1) {
-        const group = createElementNS("g", {
-          class: "gc",
-          transform: `scale(${scale})`,
-        });
-        const defs =
-          document.querySelector("#decorative-bg defs") ||
-          createElementNS("defs");
+        const group = createElementNS('g', { class: 'gc', transform: `scale(${scale})` });
+        const defs = document.querySelector('#decorative-bg defs') || createElementNS('defs');
 
         rotations.forEach((angle) => {
-          const use = createElementNS("use", {
-            href: "#petal",
-            transform: `rotate(${angle})`,
+          const use = createElementNS('use', {
+            'href': '#petal',
+            'transform': `rotate(${angle})`,
           });
           group.appendChild(use);
         });
@@ -1055,25 +966,25 @@
       }
 
       function createMandala(config) {
-        const group = createElementNS("g", {
-          transform: `translate(${config.position.x},${config.position.y})`,
+        const group = createElementNS('g', {
+          'transform': `translate(${config.position.x},${config.position.y})`,
         });
 
         // Rings
         config.rings.forEach((radius) => {
           group.appendChild(
-            createElementNS("circle", {
-              r: radius,
-              class: "gs",
-              "stroke-width": "0.4",
-            }),
+            createElementNS('circle', {
+              'r': radius,
+              'class': 'gs',
+              'stroke-width': '0.4',
+            })
           );
         });
 
         // Spokes (simplified)
-        const spokeGroup = createElementNS("g", {
-          class: "ss",
-          "stroke-width": "0.5",
+        const spokeGroup = createElementNS('g', {
+          'class': 'ss',
+          'stroke-width': '0.5',
         });
 
         const maxR = config.rings[0];
@@ -1083,7 +994,7 @@
         ];
 
         spokes.forEach((spoke) => {
-          spokeGroup.appendChild(createElementNS("line", spoke));
+          spokeGroup.appendChild(createElementNS('line', spoke));
         });
 
         group.appendChild(spokeGroup);
@@ -1094,23 +1005,23 @@
 
         // Center dot
         group.appendChild(
-          createElementNS("circle", {
-            r: "4",
-            fill: "rgba(198,138,30,0.09)",
-          }),
+          createElementNS('circle', {
+            'r': '4',
+            'fill': 'rgba(198,138,30,0.09)',
+          })
         );
 
         return group;
       }
 
       function createDiamond(diamond) {
-        return createElementNS("rect", {
-          x: diamond.x,
-          y: diamond.y,
-          width: diamond.size,
-          height: diamond.size,
-          fill: "rgba(198,138,30,0.09)",
-          transform: `rotate(45,${diamond.x + diamond.size / 2},${diamond.y + diamond.size / 2})`,
+        return createElementNS('rect', {
+          'x': diamond.x,
+          'y': diamond.y,
+          'width': diamond.size,
+          'height': diamond.size,
+          'fill': 'rgba(198,138,30,0.09)',
+          'transform': `rotate(45,${diamond.x + diamond.size / 2},${diamond.y + diamond.size / 2})`,
         });
       }
 
@@ -1119,14 +1030,14 @@
       // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
       function initializeDecorations() {
-        const svg = document.getElementById("decorative-bg");
+        const svg = document.getElementById('decorative-bg');
         if (!svg) return;
 
         // Create defs with petal pattern
-        const defs = createElementNS("defs");
-        const petalPath = createElementNS("path", {
-          id: "petal",
-          d: PETAL_PATH,
+        const defs = createElementNS('defs');
+        const petalPath = createElementNS('path', {
+          'id': 'petal',
+          'd': PETAL_PATH,
         });
         defs.appendChild(petalPath);
         svg.appendChild(defs);
@@ -1141,7 +1052,7 @@
         svg.appendChild(createMandala(MANDALA_MEDIUM));
 
         // Add decorative diamonds
-        const diamondGroup = createElementNS("g");
+        const diamondGroup = createElementNS('g');
         DECORATIVE_ELEMENTS.diamonds.forEach((diamond) => {
           diamondGroup.appendChild(createDiamond(diamond));
         });
@@ -1150,75 +1061,75 @@
         // Add decorative lines
         DECORATIVE_ELEMENTS.lines.forEach((line) => {
           svg.appendChild(
-            createElementNS("line", {
+            createElementNS('line', {
               ...line,
-              stroke: "rgba(198,138,30,0.10)",
-              "stroke-width": "0.6",
-              "stroke-dasharray": "4 6",
-            }),
+              'stroke': 'rgba(198,138,30,0.10)',
+              'stroke-width': '0.6',
+              'stroke-dasharray': '4 6',
+            })
           );
         });
 
         // Add corner ornaments
-        const corners = createElementNS("g", {
-          stroke: "rgba(198,138,30,0.13)",
-          "stroke-width": "0.8",
-          fill: "none",
+        const corners = createElementNS('g', {
+          'stroke': 'rgba(198,138,30,0.13)',
+          'stroke-width': '0.8',
+          'fill': 'none',
         });
 
         const cornerPaths = [
-          "M804,8 L804,42 M804,8 L770,8",
-          "M56,8  L56,42  M56,8  L90,8",
-          "M804,612 L804,578 M804,612 L770,612",
-          "M56,612 L56,578  M56,612 L90,612",
+          'M804,8 L804,42 M804,8 L770,8',
+          'M56,8  L56,42  M56,8  L90,8',
+          'M804,612 L804,578 M804,612 L770,612',
+          'M56,612 L56,578  M56,612 L90,612',
         ];
 
         cornerPaths.forEach((path) => {
-          corners.appendChild(createElementNS("path", { d: path }));
+          corners.appendChild(createElementNS('path', { 'd': path }));
         });
 
         svg.appendChild(corners);
 
         // Add subtle center watermark
-        const watermark = createElementNS("g", {
-          transform: "translate(430,52)",
-          opacity: "0.7",
+        const watermark = createElementNS('g', {
+          'transform': 'translate(430,52)',
+          'opacity': '0.7',
         });
 
         watermark.appendChild(createPetalGroup(LOTUS_PATTERNS.lotus8, 0.7));
         watermark.appendChild(
-          createElementNS("circle", {
-            r: "3",
-            fill: "rgba(198,138,30,0.08)",
-          }),
+          createElementNS('circle', {
+            'r': '3',
+            'fill': 'rgba(198,138,30,0.08)',
+          })
         );
 
         svg.appendChild(watermark);
 
         // Add OM-inspired arcs
-        const arcs = createElementNS("g", {
-          transform: "translate(840,180)",
-          fill: "none",
-          stroke: "rgba(217,113,43,0.08)",
-          "stroke-width": "0.7",
+        const arcs = createElementNS('g', {
+          'transform': 'translate(840,180)',
+          'fill': 'none',
+          'stroke': 'rgba(217,113,43,0.08)',
+          'stroke-width': '0.7',
         });
 
         const arcPaths = [
-          "M-30,0 A30,30 0 0,1 30,0",
-          "M-46,0 A46,46 0 0,1 46,0",
-          "M-60,0 A60,60 0 0,1 60,0",
+          'M-30,0 A30,30 0 0,1 30,0',
+          'M-46,0 A46,46 0 0,1 46,0',
+          'M-60,0 A60,60 0 0,1 60,0',
         ];
 
         arcPaths.forEach((path) => {
-          arcs.appendChild(createElementNS("path", { d: path }));
+          arcs.appendChild(createElementNS('path', { 'd': path }));
         });
 
         svg.appendChild(arcs);
       }
 
       // Initialize when DOM is ready
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initializeDecorations);
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeDecorations);
       } else {
         initializeDecorations();
       }
