@@ -1,14 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Temple of Knowledge Corporate Wellness Retreat 2026" />
+    <meta
+      name="description"
+      content="Temple of Knowledge Corporate Wellness Retreat 2026"
+    />
     <meta name="theme-color" content="#faf1de" />
     <title>TOK Corporate Wellness Retreat 2026 — Flyer</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23d9712b' width='100' height='100'/%3E%3Ctext x='50' y='65' font-size='42' font-weight='bold' fill='%23e8cb80' text-anchor='middle' font-family='Cormorant Garamond, serif'%3EAOL%3C/text%3E%3C/svg%3E" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23d9712b' width='100' height='100'/%3E%3Ctext x='50' y='65' font-size='42' font-weight='bold' fill='%23e8cb80' text-anchor='middle' font-family='Cormorant Garamond, serif'%3EAOL%3C/text%3E%3C/svg%3E"
+    />
 
     <!-- Font optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -17,6 +24,9 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mulish:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- html2canvas for download functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -66,7 +76,12 @@
           #c5b690 40%,
           #b8945f 100%
         );
-        font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family:
+          "Mulish",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
         color: var(--brown);
         display: flex;
         flex-direction: column;
@@ -80,6 +95,56 @@
         body {
           padding: var(--spacing-lg);
         }
+      }
+
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      /* DOWNLOAD BUTTON                                 */
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      .controls {
+        margin-bottom: var(--spacing-lg);
+        display: flex;
+        gap: var(--spacing-md);
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: 12px 24px;
+        background: linear-gradient(
+          135deg,
+          var(--saffron) 0%,
+          var(--gold) 100%
+        );
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-family: "Mulish", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(217, 113, 43, 0.25);
+        text-decoration: none;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(217, 113, 43, 0.35);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(217, 113, 43, 0.25);
+      }
+
+      .btn-icon {
+        width: 18px;
+        height: 18px;
+        display: inline-block;
       }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -157,13 +222,13 @@
       }
 
       .head__inner {
-        position: relative;
         z-index: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: var(--spacing-lg) var(--spacing-md);
         width: 100%;
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex-direction: column;
+        padding: var(--spacing-lg) var(--spacing-md);
       }
 
       @media (min-width: var(--bp-sm)) {
@@ -173,11 +238,12 @@
       }
 
       .logo {
-        height: 40px;
         width: auto;
+        height: 100px;
+        border-radius: 100%;
+        transition: transform 0.3s ease;
         margin-bottom: var(--spacing-md);
         filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.5));
-        transition: transform 0.3s ease;
       }
 
       @media (min-width: var(--bp-sm)) {
@@ -201,7 +267,6 @@
         letter-spacing: 0.18em;
         text-transform: uppercase;
         color: var(--gold-pale);
-        margin-bottom: var(--spacing-lg);
       }
 
       .kicker .rule {
@@ -229,17 +294,17 @@
         font-style: italic;
         font-size: clamp(16px, 4vw, 20px);
         color: rgba(240, 230, 212, 0.9);
-        margin-bottom: var(--spacing-sm);
+        margin: var(--spacing-sm) 0;
       }
 
       .head h1 {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 600;
-        font-size: clamp(32px, 8vw, 50px);
-        line-height: 1.1;
         color: #fff;
+        font-weight: 600;
+        line-height: 1.1;
+        margin: var(--spacing-xs) 0;
+        font-size: clamp(32px, 8vw, 50px);
+        font-family: "Cormorant Garamond", serif;
         text-shadow: 0 2px 22px rgba(10, 14, 28, 0.5);
-        margin-bottom: var(--spacing-lg);
       }
 
       .head h1 b {
@@ -416,13 +481,21 @@
       }
 
       .table-wrapper::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, var(--saffron) 0%, var(--gold) 100%);
+        background: linear-gradient(
+          180deg,
+          var(--saffron) 0%,
+          var(--gold) 100%
+        );
         border-radius: 4px;
         transition: background 0.3s ease;
       }
 
       .table-wrapper::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(180deg, var(--saffron-deep) 0%, var(--gold) 100%);
+        background: linear-gradient(
+          180deg,
+          var(--saffron-deep) 0%,
+          var(--gold) 100%
+        );
       }
 
       /* Firefox scrollbar styling */
@@ -561,7 +634,7 @@
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       .imgband {
         position: relative;
-        min-height: 160px;
+        min-height: 200px;
         height: auto;
         overflow: hidden;
         display: flex;
@@ -592,48 +665,78 @@
       .contact {
         position: relative;
         z-index: 2;
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        align-items: flex-end;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: var(--spacing-lg);
         width: 100%;
         padding: var(--spacing-lg) var(--spacing-lg);
-        gap: var(--spacing-lg);
-        min-height: auto;
+        align-items: flex-end;
       }
 
       @media (max-width: 639px) {
         .contact {
-          flex-flow: column;
-          align-items: flex-start;
-          justify-content: flex-end;
-          padding: var(--spacing-md) var(--spacing-md);
+          grid-template-columns: 1fr;
           gap: var(--spacing-md);
+          padding: var(--spacing-md) var(--spacing-md);
         }
       }
 
-      .contact__left {
-        flex: 1;
+      .contact__section {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
       }
 
-      .contact__right {
+      .contact__section.text-right {
         text-align: right;
-        white-space: nowrap;
       }
 
-      .contact__left .lab,
-      .contact__right .lab {
+      @media (max-width: 639px) {
+        .contact__section.text-right {
+          text-align: left;
+        }
+      }
+
+      .contact__qr {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: center;
+      }
+
+      @media (max-width: 639px) {
+        .contact__qr {
+          align-items: flex-start;
+        }
+      }
+
+      .qr-code {
+        width: 90px;
+        height: 90px;
+        background: #fff;
+        padding: 4px;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .qr-code img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .contact__lab {
         font-size: clamp(8px, 2vw, 9.5px);
         font-weight: 700;
         letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--gold-pale);
-        margin-bottom: 4px;
+        margin-bottom: 2px;
       }
 
-      .contact__left .line {
+      .contact__line {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(18px, 5vw, 22px);
+        font-size: clamp(16px, 5vw, 22px);
         font-weight: 600;
         color: #fff;
         line-height: 1.25;
@@ -644,15 +747,28 @@
         display: flex;
         flex-direction: column;
         gap: 3px;
-        align-items: flex-end;
       }
 
       .phones span {
         font-size: clamp(11px, 3vw, 13px);
         font-weight: 600;
         color: #fbefd9;
-        white-space: nowrap;
         letter-spacing: 0.2px;
+      }
+
+      .contact-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: clamp(11px, 3vw, 13px);
+        font-weight: 600;
+        color: #fbefd9;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .contact-link:hover {
+        color: var(--gold-pale);
       }
 
       /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -708,6 +824,10 @@
         .body-bg {
           display: none;
         }
+
+        .controls {
+          display: none !important;
+        }
       }
 
       @media (max-width: 479px) {
@@ -719,19 +839,43 @@
           display: none;
         }
       }
+
+      /* Loading state for download button */
+      .btn.loading {
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      .btn.loading::after {
+        content: "";
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        margin-left: 6px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="page">
+    <div class="page" id="flyer">
       <header class="head" role="banner">
         <div class="head__img" aria-hidden="true"></div>
         <div class="head__overlay" aria-hidden="true"></div>
         <div class="head__inner">
           <img
             class="logo"
+            loading="lazy"
             src="./img/logo.png"
             alt="Temple of Knowledge / Art of Living"
-            loading="lazy"
           />
           <div class="kicker" aria-label="Retreat location">
             <span class="rule" aria-hidden="true"></span>
@@ -742,9 +886,7 @@
           </div>
           <div class="head__titles">
             <p class="pres">presents the</p>
-            <h1>
-              Corporate Wellness <b>Retreat 2026</b>
-            </h1>
+            <h1>Corporate Wellness <b>Retreat 2026</b></h1>
             <div class="tagline" aria-label="Retreat themes">
               <span>LEADERSHIP</span>
               <i aria-hidden="true"></i>
@@ -805,82 +947,132 @@
               <tbody>
                 <tr>
                   <td class="num">01</td>
-                  <td class="time">10:00 – 10:15 AM</td>
+                  <td class="time">10:00 – 10:10 AM</td>
                   <td class="session">Welcome &amp; Opening Remarks</td>
-                  <td class="speaker">Bijay ji</td>
+                  <td class="speaker">Mr. Bijay Kashajoo</td>
                 </tr>
                 <tr>
                   <td class="num">02</td>
-                  <td class="time">10:15 – 10:35 AM</td>
-                  <td class="session">Temple of Knowledge: Vision, Purpose &amp; Future Direction</td>
-                  <td class="speaker">S.K. Ji</td>
+                  <td class="time">10:10 – 10:20 AM</td>
+                  <td class="session">
+                    Temple of Knowledge: Vision, Purpose &amp; Future Direction
+                  </td>
+                  <td class="speaker">APEX Chairman S.K. Singh</td>
                 </tr>
                 <tr>
                   <td class="num">03</td>
-                  <td class="time">10:35 – 11:00 AM</td>
-                  <td class="session">Art of Living: Global Vision, Local Impact</td>
-                  <td class="speaker">Sashi Raj Ji</td>
+                  <td class="time">10:20 – 10:25 AM</td>
+                  <td class="session">
+                    Art of Living: Global Vision, Local Impact
+                  </td>
+                  <td class="speaker">Sashi Raj Pandey, Former Chairman AOL</td>
                 </tr>
                 <tr>
                   <td class="num">04</td>
-                  <td class="time">11:00 – 11:35 AM</td>
-                  <td class="session">Corporate Wellness &amp; Retreat Experience at Temple of Knowledge</td>
-                  <td class="speaker">Neeva M. Pradhan</td>
+                  <td class="time">10:25 – 10:45 AM</td>
+                  <td class="session">
+                    Corporate Wellness &amp; Retreat Experience at Temple of
+                    Knowledge
+                  </td>
+                  <td class="speaker">
+                    Neeva M. Pradhan, Director, Corporate Programs, AOL Nepal
+                  </td>
                 </tr>
                 <tr>
                   <td class="num">05</td>
-                  <td class="time">11:35 – 12:05 PM</td>
-                  <td class="session">Guided Meditation &amp; Mindfulness Experience</td>
+                  <td class="time">10:45 – 11:00 AM</td>
+                  <td class="session">
+                    Guided Meditation &amp; Mindfulness Experience
+                  </td>
                   <td class="speaker">—</td>
                 </tr>
                 <tr>
                   <td class="num">06</td>
-                  <td class="time">12:05 – 12:45 PM</td>
-                  <td class="session">Corporate Culture, Human Values &amp; Why Invest in Human Capital</td>
-                  <td class="speaker">Mr. Tenzin Sonam Gonsar, CEO, Team Ventures</td>
+                  <td class="time">11:00 – 11:10 AM</td>
+                  <td class="session">
+                    Corporate Culture, Human Values &amp; Why Invest in Human
+                    Capital
+                  </td>
+                  <td class="speaker">
+                    Mr. Tenzin Sonam Gonsar, CEO, Team Ventures
+                  </td>
                 </tr>
                 <tr>
                   <td class="num">07</td>
-                  <td class="time">12:45 – 1:15 PM</td>
-                  <td class="session">Open Discussion &amp; Interactive Q&amp;A</td>
+                  <td class="time">11:10 – 11:25 AM</td>
+                  <td class="session">
+                    Open Discussion &amp; Interactive Q&amp;A
+                  </td>
                   <td class="speaker">—</td>
                 </tr>
                 <tr>
                   <td class="num">08</td>
-                  <td class="time">1:15 – 1:25 PM</td>
+                  <td class="time">11:25 – 11:40 AM</td>
                   <td class="session">Token of Appreciation</td>
-                  <td class="speaker">S.K. Ji &amp; Rajesh B. Pradhan</td>
+                  <td class="speaker">
+                    APEX Chairman S.K. Singh &amp; Vice President, Rajesh
+                    Pradhan
+                  </td>
                 </tr>
                 <tr>
                   <td class="num">09</td>
-                  <td class="time">1:25 – 1:35 PM</td>
+                  <td class="time">11:40 – 11:45 AM</td>
                   <td class="session">Closing Remarks &amp; Next Steps</td>
                   <td class="speaker">Organizing Team</td>
                 </tr>
                 <tr>
                   <td class="num">10</td>
-                  <td class="time">1:35 – 2:30 PM</td>
-                  <td class="session">Networking Lunch &amp; Informal Interactions</td>
+                  <td class="time">11:45 – 2:30 PM</td>
+                  <td class="session">
+                    Networking Lunch &amp; Informal Interactions
+                  </td>
                   <td class="speaker">All Participants</td>
                 </tr>
               </tbody>
             </table>
           </div>
+        </section>
       </main>
 
       <footer class="imgband">
         <div class="imgband__img"></div>
         <div class="imgband__overlay"></div>
         <div class="contact">
-          <div class="contact__left">
-            <div class="lab"></div>
-            <div class="line">
+          <div class="contact__section">
+            <div class="contact__lab"></div>
+            <div class="contact__line">
               A day of stillness,<br />
               away from the desk.
             </div>
           </div>
-          <div class="contact__right">
-            <div class="lab">Contact</div>
+          <div class="contact__section contact__qr">
+            <a
+              href="https://maps.app.goo.gl/aozmQGnpBCBvaWfd8"
+              target="_blank"
+              class="contact-link"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              View Map
+            </a>
+            <div class="qr-code">
+              <img
+                src="./img/loc-tok.png"
+                alt="Scan QR code for event details"
+              />
+            </div>
+          </div>
+          <div class="contact__section text-right">
+            <div class="contact__lab">Contact</div>
             <div class="phones">
               <span>+977 9851233348</span>
               <span>+977 9813699979</span>
@@ -891,12 +1083,30 @@
       </footer>
     </div>
 
+    <!-- Download Button at Bottom -->
+    <div class="controls" style="margin-top: var(--spacing-lg)">
+      <button id="downloadBtn" class="btn">
+        <svg
+          class="btn-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download Flyer
+      </button>
+    </div>
+
     <script>
       // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
       // SVG DECORATION CONSTANTS
       // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-      const PETAL_PATH = 'M0,-28 C8,-14 8,14 0,28 C-8,14 -8,-14 0,-28Z';
+      const PETAL_PATH = "M0,-28 C8,-14 8,14 0,28 C-8,14 -8,-14 0,-28Z";
 
       const LOTUS_PATTERNS = {
         lotus12: [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330],
@@ -907,21 +1117,21 @@
         position: { x: 760, y: 310 },
         rings: [130, 108, 86],
         scale: 2.4,
-        type: 'lotus12',
+        type: "lotus12",
       };
 
       const MANDALA_SMALL = {
         position: { x: 62, y: 68 },
         rings: [56, 42],
         scale: 1.3,
-        type: 'lotus8',
+        type: "lotus8",
       };
 
       const MANDALA_MEDIUM = {
         position: { x: 80, y: 530 },
         rings: [78, 60],
         scale: 1.6,
-        type: 'lotus12',
+        type: "lotus12",
       };
 
       const DECORATIVE_ELEMENTS = {
@@ -943,7 +1153,7 @@
       // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
       function createElementNS(tag, attrs = {}) {
-        const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
         Object.entries(attrs).forEach(([key, value]) => {
           el.setAttribute(key, value);
         });
@@ -951,13 +1161,18 @@
       }
 
       function createPetalGroup(rotations, scale = 1) {
-        const group = createElementNS('g', { class: 'gc', transform: `scale(${scale})` });
-        const defs = document.querySelector('#decorative-bg defs') || createElementNS('defs');
+        const group = createElementNS("g", {
+          class: "gc",
+          transform: `scale(${scale})`,
+        });
+        const defs =
+          document.querySelector("#decorative-bg defs") ||
+          createElementNS("defs");
 
         rotations.forEach((angle) => {
-          const use = createElementNS('use', {
-            'href': '#petal',
-            'transform': `rotate(${angle})`,
+          const use = createElementNS("use", {
+            href: "#petal",
+            transform: `rotate(${angle})`,
           });
           group.appendChild(use);
         });
@@ -966,25 +1181,25 @@
       }
 
       function createMandala(config) {
-        const group = createElementNS('g', {
-          'transform': `translate(${config.position.x},${config.position.y})`,
+        const group = createElementNS("g", {
+          transform: `translate(${config.position.x},${config.position.y})`,
         });
 
         // Rings
         config.rings.forEach((radius) => {
           group.appendChild(
-            createElementNS('circle', {
-              'r': radius,
-              'class': 'gs',
-              'stroke-width': '0.4',
-            })
+            createElementNS("circle", {
+              r: radius,
+              class: "gs",
+              "stroke-width": "0.4",
+            }),
           );
         });
 
         // Spokes (simplified)
-        const spokeGroup = createElementNS('g', {
-          'class': 'ss',
-          'stroke-width': '0.5',
+        const spokeGroup = createElementNS("g", {
+          class: "ss",
+          "stroke-width": "0.5",
         });
 
         const maxR = config.rings[0];
@@ -994,7 +1209,7 @@
         ];
 
         spokes.forEach((spoke) => {
-          spokeGroup.appendChild(createElementNS('line', spoke));
+          spokeGroup.appendChild(createElementNS("line", spoke));
         });
 
         group.appendChild(spokeGroup);
@@ -1005,23 +1220,23 @@
 
         // Center dot
         group.appendChild(
-          createElementNS('circle', {
-            'r': '4',
-            'fill': 'rgba(198,138,30,0.09)',
-          })
+          createElementNS("circle", {
+            r: "4",
+            fill: "rgba(198,138,30,0.09)",
+          }),
         );
 
         return group;
       }
 
       function createDiamond(diamond) {
-        return createElementNS('rect', {
-          'x': diamond.x,
-          'y': diamond.y,
-          'width': diamond.size,
-          'height': diamond.size,
-          'fill': 'rgba(198,138,30,0.09)',
-          'transform': `rotate(45,${diamond.x + diamond.size / 2},${diamond.y + diamond.size / 2})`,
+        return createElementNS("rect", {
+          x: diamond.x,
+          y: diamond.y,
+          width: diamond.size,
+          height: diamond.size,
+          fill: "rgba(198,138,30,0.09)",
+          transform: `rotate(45,${diamond.x + diamond.size / 2},${diamond.y + diamond.size / 2})`,
         });
       }
 
@@ -1030,14 +1245,14 @@
       // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
       function initializeDecorations() {
-        const svg = document.getElementById('decorative-bg');
+        const svg = document.getElementById("decorative-bg");
         if (!svg) return;
 
         // Create defs with petal pattern
-        const defs = createElementNS('defs');
-        const petalPath = createElementNS('path', {
-          'id': 'petal',
-          'd': PETAL_PATH,
+        const defs = createElementNS("defs");
+        const petalPath = createElementNS("path", {
+          id: "petal",
+          d: PETAL_PATH,
         });
         defs.appendChild(petalPath);
         svg.appendChild(defs);
@@ -1052,7 +1267,7 @@
         svg.appendChild(createMandala(MANDALA_MEDIUM));
 
         // Add decorative diamonds
-        const diamondGroup = createElementNS('g');
+        const diamondGroup = createElementNS("g");
         DECORATIVE_ELEMENTS.diamonds.forEach((diamond) => {
           diamondGroup.appendChild(createDiamond(diamond));
         });
@@ -1061,78 +1276,146 @@
         // Add decorative lines
         DECORATIVE_ELEMENTS.lines.forEach((line) => {
           svg.appendChild(
-            createElementNS('line', {
+            createElementNS("line", {
               ...line,
-              'stroke': 'rgba(198,138,30,0.10)',
-              'stroke-width': '0.6',
-              'stroke-dasharray': '4 6',
-            })
+              stroke: "rgba(198,138,30,0.10)",
+              "stroke-width": "0.6",
+              "stroke-dasharray": "4 6",
+            }),
           );
         });
 
         // Add corner ornaments
-        const corners = createElementNS('g', {
-          'stroke': 'rgba(198,138,30,0.13)',
-          'stroke-width': '0.8',
-          'fill': 'none',
+        const corners = createElementNS("g", {
+          stroke: "rgba(198,138,30,0.13)",
+          "stroke-width": "0.8",
+          fill: "none",
         });
 
         const cornerPaths = [
-          'M804,8 L804,42 M804,8 L770,8',
-          'M56,8  L56,42  M56,8  L90,8',
-          'M804,612 L804,578 M804,612 L770,612',
-          'M56,612 L56,578  M56,612 L90,612',
+          "M804,8 L804,42 M804,8 L770,8",
+          "M56,8  L56,42  M56,8  L90,8",
+          "M804,612 L804,578 M804,612 L770,612",
+          "M56,612 L56,578  M56,612 L90,612",
         ];
 
         cornerPaths.forEach((path) => {
-          corners.appendChild(createElementNS('path', { 'd': path }));
+          corners.appendChild(createElementNS("path", { d: path }));
         });
 
         svg.appendChild(corners);
 
         // Add subtle center watermark
-        const watermark = createElementNS('g', {
-          'transform': 'translate(430,52)',
-          'opacity': '0.7',
+        const watermark = createElementNS("g", {
+          transform: "translate(430,52)",
+          opacity: "0.7",
         });
 
         watermark.appendChild(createPetalGroup(LOTUS_PATTERNS.lotus8, 0.7));
         watermark.appendChild(
-          createElementNS('circle', {
-            'r': '3',
-            'fill': 'rgba(198,138,30,0.08)',
-          })
+          createElementNS("circle", {
+            r: "3",
+            fill: "rgba(198,138,30,0.08)",
+          }),
         );
 
         svg.appendChild(watermark);
 
         // Add OM-inspired arcs
-        const arcs = createElementNS('g', {
-          'transform': 'translate(840,180)',
-          'fill': 'none',
-          'stroke': 'rgba(217,113,43,0.08)',
-          'stroke-width': '0.7',
+        const arcs = createElementNS("g", {
+          transform: "translate(840,180)",
+          fill: "none",
+          stroke: "rgba(217,113,43,0.08)",
+          "stroke-width": "0.7",
         });
 
         const arcPaths = [
-          'M-30,0 A30,30 0 0,1 30,0',
-          'M-46,0 A46,46 0 0,1 46,0',
-          'M-60,0 A60,60 0 0,1 60,0',
+          "M-30,0 A30,30 0 0,1 30,0",
+          "M-46,0 A46,46 0 0,1 46,0",
+          "M-60,0 A60,60 0 0,1 60,0",
         ];
 
         arcPaths.forEach((path) => {
-          arcs.appendChild(createElementNS('path', { 'd': path }));
+          arcs.appendChild(createElementNS("path", { d: path }));
         });
 
         svg.appendChild(arcs);
       }
 
-      // Initialize when DOM is ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeDecorations);
-      } else {
-        initializeDecorations();
+      // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      // DOWNLOAD FUNCTIONALITY
+      // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+      async function downloadFlyer() {
+        const button = document.getElementById("downloadBtn");
+        const originalHTML = button.innerHTML;
+
+        try {
+          button.classList.add("loading");
+          button.innerHTML = "<span>Generating...</span>";
+
+          const element = document.getElementById("flyer");
+
+          // Create canvas from the flyer element
+          const canvas = await html2canvas(element, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: "#faf1de",
+            logging: false,
+            imageTimeout: 0,
+          });
+
+          // Convert canvas to blob and download using dataURL as fallback
+          canvas.toBlob(
+            (blob) => {
+              if (blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "TOK-Corporate-Wellness-Retreat-2026.png";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+              } else {
+                // Fallback: use toDataURL
+                downloadUsingDataURL(canvas);
+              }
+
+              button.classList.remove("loading");
+              button.innerHTML = originalHTML;
+            },
+            "image/png",
+            0.95,
+          );
+        } catch (error) {
+          console.error("Download failed:", error);
+          button.classList.remove("loading");
+          button.innerHTML = originalHTML;
+          alert("Download failed. Please try again.");
+        }
       }
+
+      function downloadUsingDataURL(canvas) {
+        const dataURL = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = dataURL;
+        link.download = "TOK-Corporate-Wellness-Retreat-2026.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      // Event listeners
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeDecorations();
+
+        const downloadBtn = document.getElementById("downloadBtn");
+        if (downloadBtn) {
+          downloadBtn.addEventListener("click", downloadFlyer);
+        }
+      });
     </script>
   </body>
 </html>
